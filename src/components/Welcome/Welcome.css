@@ -1,0 +1,45 @@
+form {
+  padding-top: 25px;
+  background-color: white;
+}
+
+.welcome {
+  display: flex;
+  max-width: 1200px;
+  margin: auto auto;
+  flex-direction: column;
+}
+.login_container {
+  display: flex;
+  justify-content: center;
+}
+
+.instructions {
+  padding: 4px;
+}
+
+.instructions > p {
+  margin: 8px;
+  text-align: left;
+}
+
+.login_options > .user_login_control {
+  width: 120px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  margin: 2px;
+}
+
+
+@media only screen and (min-width: 500px) {
+
+  .instructions {
+    padding: 15px;
+  }
+
+  .instructions > p {
+    margin: 16px;
+  }
+
+}
