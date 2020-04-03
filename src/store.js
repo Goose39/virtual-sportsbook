@@ -1,8 +1,8 @@
 export const sportsData = {
   "Soccer": {
-    "leagues": {
+    leagues: {
       "Premier League": {
-        "teams": {
+        teams: {
           "Liverpool": {
             "id": 1,
             "ranking": 1,
@@ -46,14 +46,14 @@ export const sportsData = {
         },
         "matches": [
           {
-            "start_time": Date(today()),
+            "start_time": new Date("2020-03-10T12:00:00Z"),
             "home_team": "Chelsea",
             "away_team": "Leicester City",
             "home_odd": 1.9,
             "away_odd": 1.9,
           },
           {
-            "start_time": Date(today()),
+            "start_time": new Date("2020-03-10T12:00:00Z"),
             "home_team": "Tottenham",
             "away_team": "Burnley",
             "home_odd": 1.83,
@@ -64,9 +64,9 @@ export const sportsData = {
     },
   },
   "American Football": {
-    "leagues": {
+    leagues: {
       "NFL": {
-        "teams": {
+        teams: {
           "Patriots": {
             "id": 1,
             "ranking": 1,
@@ -107,16 +107,17 @@ export const sportsData = {
             "id": 10,
             "ranking": 2,
           },
-          "matches": [
+        },
+          matches: [
             {
-              "start_time": Date(today()),
+              "start_time": new Date("2020-03-10T12:00:00Z"),
               "home_team": "Broncos",
               "away_team": "Bills",
               "home_odd": 1.9,
               "away_odd": 1.9,
             },
             {
-              "start_time": Date(today()),
+              "start_time": new Date("2020-03-10T12:00:00Z"),
               "home_team": "Patriots",
               "away_team": "Chiefs",
               "home_odd": 1.83,
@@ -127,9 +128,9 @@ export const sportsData = {
       },
     },
     "Baseball": {
-      "leagues": {
+      leagues: {
         "MLB": {
-          "teams": {
+          teams: {
             "Yankees": {
               "id": 1,
               "ranking": 1,
@@ -146,7 +147,7 @@ export const sportsData = {
               "id": 4,
               "ranking": 4,
             },
-            "David Goffin": {
+            "Orioles": {
               "id": 5,
               "ranking": 5,
             },
@@ -171,29 +172,29 @@ export const sportsData = {
               "ranking": 5,
             },
           },
-          "matches": [
-            {
-              "start_time": Date(today()),
-              "home_team": "Red Sox",
-              "away_team": "Indians",
-              "home_odd": 1.9,
-              "away_odd": 1.9,
-            },
-            {
-              "start_time": Date(today()),
-              "home_team": "Yankees",
-              "away_team": "Twins",
-              "home_odd": 1.83,
-              "away_odd": 2.0,
-            },
-          ],
         },
       },
+      matches: [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Red Sox",
+          "away_team": "Indians",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Yankees",
+          "away_team": "Twins",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ],
     },
-    "Basketball": {
-      "leagues": {
+    basketball: {
+      leagues: {
         "NBA": {
-          "teams": {
+          teams: {
             "Bucks": {
               "id": 1,
               "ranking": 1,
@@ -234,201 +235,136 @@ export const sportsData = {
               "id": 10,
               "ranking": 2,
             },
-            "matches": [
-              {
-                "start_time": Date(today()),
-                "home_team": "Pacers",
-                "away_team": "Heat",
-                "home_odd": 1.9,
-                "away_odd": 1.9,
-              },
-              {
-                "start_time": Date(today()),
-                "home_team": "76ers",
-                "away_team": "Nets",
-                "home_odd": 1.83,
-                "away_odd": 2.0,
-              },
-            ],
           },
         },
       },
+      matches: [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Pacers",
+          "away_team": "Heat",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "76ers",
+          "away_team": "Nets",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ],
     },
-    "Ice Hockey": {
-      "leagues": {
+    ice_hockey: {
+      leagues: {
         "NHL": {
-        "teams": {
-          "Bruins": {
-            "id": 1,
-            "ranking": 1,
-          },
-          "Lightning": {
-            "id": 2,
-            "ranking": 2,
-          },
-          "Maple Leafs": {
-            "id": 3,
-            "ranking": 3,
-          },
-          "Panthers": {
-            "id": 4,
-            "ranking": 4,
-          },
-          "Canadiens": {
-            "id": 5,
-            "ranking": 1,
-          },
-          "Capitals": {
-            "id": 6,
-            "ranking": 1,
-          },
-          "Flyers": {
-            "id": 7,
-            "ranking": 2,
-          },
-          "Penguins": {
-            "id": 8,
-            "ranking": 3,
-          },
-          "Hurricanes": {
-            "id": 9,
-            "ranking": 4,
-          },
-          "Blue Jackets": {
-            "id": 10,
-            "ranking": 5,
-          },
-        },
-          "matches": [
-            {
-              "start_time": Date(today()),
-              "home_team": "Penguins",
-              "away_team": "Maple Leafs",
-              "home_odd": 1.9,
-              "away_odd": 1.9,
-            },
-            {
-              "start_time": Date(today()),
-              "home_team": "Lightning",
-              "away_team": "Hurricanes",
-              "home_odd": 1.83,
-              "away_odd": 2.0,
-            },
-          ],
-        },
-      },
-    },
-    "Tennis": {
-      "leagues": {
-        "ATP": {
-          "teams": {
-            "Novak Djokovic": {
+          teams: {
+            "Bruins": {
               "id": 1,
               "ranking": 1,
             },
-            "Rafael Nadal": {
+            "Lightning": {
               "id": 2,
               "ranking": 2,
             },
-            "Dominic Thiem": {
+            "Maple Leafs": {
               "id": 3,
               "ranking": 3,
             },
-            "Roger Federer": {
+            "Panthers": {
               "id": 4,
               "ranking": 4,
             },
-            "Daniil Medvedev": {
+            "Canadiens": {
               "id": 5,
+              "ranking": 1,
+            },
+            "Capitals": {
+              "id": 6,
+              "ranking": 1,
+            },
+            "Flyers": {
+              "id": 7,
+              "ranking": 2,
+            },
+            "Penguins": {
+              "id": 8,
+              "ranking": 3,
+            },
+            "Hurricanes": {
+              "id": 9,
+              "ranking": 4,
+            },
+            "Blue Jackets": {
+              "id": 10,
               "ranking": 5,
             },
-            "Stefanos Tsitsipas": {
-              "id": 6,
-              "ranking": 6,
-            },
-            "Alexander Zverev": {
-              "id": 7,
-              "ranking": 7,
-            },
-            "Matteo Berrettini": {
-              "id": 8,
-              "ranking": 8,
-            },
-            "Gael Monfils": {
-              "id": 9,
-              "ranking": 9,
-            },
-            "David Goffin": {
-              "id": 10,
-              "ranking": 10,
-            },
           },
-          "matches": [
-            {
-              "start_time": Date(today()),
-              "home_team": "Gael Monfils",
-              "away_team": "Stefanos Tsitsipas",
-              "home_odd": 1.9,
-              "away_odd": 1.9,
-            },
-            {
-              "start_time": Date(today()),
-              "home_team": "Gael Monfils",
-              "away_team": "Stefanos Tsitsipas",
-              "home_odd": 1.83,
-              "away_odd": 2.0,
-            },
-          ],
         },
       },
-    }, 
+    matches: [
+      {
+        "start_time": new Date("2020-03-10T12:00:00Z"),
+        "home_team": "Penguins",
+        "away_team": "Maple Leafs",
+        "home_odd": 1.9,
+        "away_odd": 1.9,
+      },
+      {
+        "start_time": new Date("2020-03-10T12:00:00Z"),
+        "home_team": "Lightning",
+        "away_team": "Hurricanes",
+        "home_odd": 1.83,
+        "away_odd": 2.0,
+      },
+    ],
   }
 }
 
-export const oddsPairs = {
-  0: {
-    "fav": 1.9,
-    "UnderDog": 1.9
+export const oddsPairs = [
+  {
+    fav: 1.9,
+    underDog: 1.9
   },
-  1: {
-    "fav": 1.8,
-    "UnderDog": 1.9
+  {
+    fav: 1.8,
+    underDog: 1.9
   },
-  2: {
-    "fav": 1.73,
-    "UnderDog": 2
+  {
+    fav: 1.73,
+    underDog: 2
   },
-  3: {
-    "fav": 1.67,
-    "UnderDog": 2.1
+  {
+    fav: 1.67,
+    underDog: 2.1
   },
-  4: {
-    "fav": 1.62,
-    "UnderDog": 2.2
+  {
+    fav: 1.62,
+    underDog: 2.2
   },
-  5: {
-    "fav": 1.57,
-    "UnderDog": 2.25
+  {
+    fav: 1.57,
+    underDog: 2.25
   },
-  6: {
-    "fav": 1.53,
-    "UnderDog": 2.38
+  {
+    fav: 1.53,
+    underDog: 2.38
   },
-  7: {
-    "fav": 1.5,
-    "UnderDog": 2.5
+  {
+    fav: 1.5,
+    underDog: 2.5
   },
-  8: {
-    "fav": 1.9,
-    "UnderDog": 1.9
+  {
+    fav: 1.44,
+    underDog: 2.63
   },
-  9: {
-    "fav": 1.9,
-    "UnderDog": 1.9
+  {
+    fav: 1.4,
+    underDog: 2.75
   },
-  10: {
-    "fav": 1.9,
-    "UnderDog": 1.9
+  {
+    fav: 1.33,
+    underDog: 3
   },
-}
+]
 

@@ -3,7 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
 import Welcome from '../Welcome/Welcome';
 import Sportsbook from '../Sportsbook/Sportsbook';
-import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar';
+import generateMatch from '../../helpers/generateMatch';
+import { sportsData } from "../../store";
 
 class App extends React.Component {
 
@@ -11,6 +13,10 @@ class App extends React.Component {
     user: "Guest", 
     balance: 1000,
     bets: [],
+  }
+
+  componentDidMount() {
+    generateMatch(sportsData)
   }
 
   handleSetUser = (user, balance) => {
