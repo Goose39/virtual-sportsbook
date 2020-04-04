@@ -16,7 +16,7 @@ export default class Welcome extends React.Component {
 
   render() {
     return (
-    <>
+    <main className ="app">
       <section className="welcome">
         <div className="instructions">
           <p>This was built to give sports enthusiasts the opportunity to place a bet on their favourite sport and teams.</p>
@@ -37,7 +37,7 @@ export default class Welcome extends React.Component {
           {this.state.formOption === 'Register'? <RegistrationFrom onRegistrationSuccess={this.props.goToTable} handleSetUser={this.props.handleSetUser}/>: null}
         </div>
       </section>
-    </>
+    </main>
     )
   };
 };

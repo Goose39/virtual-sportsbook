@@ -1,0 +1,23 @@
+.betslip > header {
+  background-color: rgb(231, 229, 229);
+  padding: 5px;
+}
+
+.confirmation {
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+}
+
+.return {
+    font-size: 12px
+}
+
+@media only screen and (min-width: 550px) {
+
+  .betslip_count {
+    width: 22px;
+    height: 22px;
+  }
+  
+}

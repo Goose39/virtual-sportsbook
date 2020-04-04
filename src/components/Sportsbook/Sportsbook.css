@@ -1,198 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  font-size: 18px;
-}
-
-header {
-    padding: 5px 5px;
-}
-
-.user_name, .balance {
-  display: inline-block;
-}
-
-.app {
+.console {
   display: flex;
   margin: auto;
   justify-content: space-between;
 }
 
-body {
-  font-family: "Open Sans",
-  sans-serif;
-  font-size: 14px;
-  color: #444;
-  text-align: center;
-  line-height: 1.2;
-}
-
-header {
-  background-color: #bbb;
-}
-
-main {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.user_info {
-  color: white; 
-}
-
-.menu_item {
-  padding: 10px;
-  display: flex;
-}
-
-.menu_hamburger {
-  margin-left: 10px;
-  -webkit-transform: rotate(90deg); /* Safari and Chrome */
-  -moz-transform: rotate(90deg);   /* Firefox */
-  -ms-transform: rotate(90deg);   /* IE 9 */
-  -o-transform: rotate(90deg);   /* Opera */
-  transform: rotate(90deg);
-}
-
-.betslip_count {
-  display: inline-block;
-  margin-left: 2px;
-  width: 15px;
-  height: 15px;
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-}
-
-.match_list, .betslip{
-  display:none;
-  background-color: rgb(231, 229, 229);
-}
-
-.match_list {
-  text-align: left;
-  padding: 5px;
-}
-
-.sport {
-  white-space: nowrap;
-}
-
-.match {
-  font-size: 12px;
-  margin-left: 20px;
-}
-
-.league {
-  list-style: none;
-  overflow: hidden;
-  padding-left: 12px;
-}
-
-.selected {
-  color: white; 
-}
-
-.market {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.desc, .outcome {
-  padding: 10px;
-} 
-
-.desc {
- margin-top: 20px;
-}
-
-.odd {
-  background-color: rgb(218, 218, 218);
-  width: 50px;
-  height: 22px;
-  line-height: 25px;
-}
-
-.betslip > header {
-  background-color: rgb(231, 229, 229);
-  padding: 5px;
-}
-
-.bet_tournament {
-  font-size: 12px;
-}
-
-.bet_desc {
-  display: flex;
-  font-size: 10px;
-  padding: 5px;
-}
-
-.bet_team, bet_price {
-  padding-left: 5px;
-}
-
-bet_price::after {
-  content: "test";
-}
-
-.bet_amount {
-  width: 50px;
-  font-size: 10px;
-}
-
-.bet_amount::before {
-  content: "test";
-}
-
-.confirmation {
-  background-color: grey;
-  color: white;
-  cursor: pointer;
-}
-
-.bet_size {
-    font-size: 16px
-}
-
-.return {
-    font-size: 12px
-}
-
-
-footer {
-  background-color: grey;
-}
 
 @media only screen and (min-width: 550px) {
-
-  h1 {
-  font-size: 22px;
-  }
-
-  body {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  header {
-    padding: 15px 15px;
-  }
-
-  nav {
-    justify-content: space-around;
-  }
-
-  .user_info {
-   margin: auto;
-  }
-
-  .burger {
-    display: none;
-  }
   
   .match_list, .betslip{
     color: darkslategray;
@@ -200,8 +13,6 @@ footer {
     width: 25%;
     max-width: 300px
   }
-
-
 
   .betslip_count {
     width: 22px;
@@ -228,15 +39,6 @@ footer {
   .match_list, .betslip{
     color: darkslategray;
     width: 30%;
-  }
-
-  .sport {
-    padding-left: 20px;
-  }
-
-  .betslip_count {
-    width: 28px;
-    height: 28px;
   }
 
 }

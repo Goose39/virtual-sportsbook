@@ -20,13 +20,6 @@ header, .login_options {
   padding: 6px;
 }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: grey;
-}
-
 @media only screen and (min-width: 550px) {
 
   h1 {
@@ -49,6 +42,34 @@ nav {
 
   p + p {
     margin-top: 15px;
+  }
+
+}
+
+.selected {
+  color: white; 
+}
+
+footer {
+  background-color: grey;
+}
+
+
+
+@media only screen and (min-width: 850px) {
+
+  h1 {
+  font-size: 26px;
+  }
+
+  body {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+ 
+  .match_list, .betslip{
+    color: darkslategray;
+    width: 30%;
   }
 
 }

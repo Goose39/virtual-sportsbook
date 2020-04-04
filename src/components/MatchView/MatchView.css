@@ -1,0 +1,43 @@
+.match_view {
+  padding-top: 25px;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.desc {
+  margin-top: 20px;
+ }
+
+ .desc, .outcome {
+  padding: 10px;
+} 
+
+.market {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.odd {
+  background-color: rgb(218, 218, 218);
+  width: 50px;
+  height: 22px;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.odd:hover {
+  background-color: rgb(206, 220, 224);
+}
+
+
+@media only screen and (min-width: 550px) {
+  
+  .desc {
+   margin-top: 26px;
+  }
+
+}

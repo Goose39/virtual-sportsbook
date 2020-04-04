@@ -191,7 +191,7 @@ export const sportsData = {
         },
       ],
     },
-    basketball: {
+    "Basketball": {
       leagues: {
         "NBA": {
           teams: {
@@ -255,7 +255,7 @@ export const sportsData = {
         },
       ],
     },
-    ice_hockey: {
+    "Ice Hockey": {
       leagues: {
         "NHL": {
           teams: {
@@ -368,3 +368,106 @@ export const oddsPairs = [
   },
 ]
 
+export const matches = {
+  "Soccer": {
+    leagues: {
+      "Premier League": [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Chelsea",
+          "away_team": "Leicester City",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Tottenham",
+          "away_team": "Burnley",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ]
+    }, 
+  },
+  "American Football": {
+    leagues: {
+      "NFL": [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Broncos",
+          "away_team": "Bills",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Patriots",
+          "away_team": "Chiefs",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ],
+    }, 
+  }, 
+  "Baseball": {
+    leagues: {
+      "MLB": [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Red Sox",
+          "away_team": "Indians",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Yankees",
+          "away_team": "Twins",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ]
+    }, 
+  }, 
+  "Basketball": {
+    leagues: {
+      "NBA": [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Pacers",
+          "away_team": "Heat",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "76ers",
+          "away_team": "Nets",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ]
+    }, 
+  }, 
+  "Ice Hockey": {
+    leagues: {
+      "NHL": [
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Penguins",
+          "away_team": "Maple Leafs",
+          "home_odd": 1.9,
+          "away_odd": 1.9,
+        },
+        {
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Lightning",
+          "away_team": "Hurricanes",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
+        },
+      ]
+    }, 
+  }, 
+
+}

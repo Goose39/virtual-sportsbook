@@ -1,0 +1,24 @@
+.bet_tournament {
+  font-size: 12px;
+}
+
+.bet_desc {
+  display: flex;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.bet_team, .bet_price {
+  padding-left: 5px;
+}
+
+.bet_amount {
+  width: 50px;
+  font-size: 10px;
+}
+
+
+.bet_size {
+  font-size: 16px
+}
+

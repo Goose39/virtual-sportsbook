@@ -42,4 +42,28 @@ form {
     margin: 16px;
   }
 
-}
+  h1 {
+    font-size: 22px;
+    }
+  
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  
+    header {
+      padding: 15px 15px;
+    }
+  
+    .user_info {
+     margin: auto;
+    }
+    
+    .match_list, .betslip{
+      color: darkslategray;
+      display: inline-block;
+      width: 25%;
+      max-width: 300px
+    }
+  
+  }
