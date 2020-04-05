@@ -1,0 +1,47 @@
+main {
+  display:flex;
+}
+
+.console {
+  display: flex;
+  margin: 0 auto 0 auto;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 550px) {
+  
+  .match_list, .betslip{
+    color: darkslategray;
+    display: inline-block;
+    width: 25%;
+    max-width: 300px
+  }
+
+  .betslip_count {
+    width: 22px;
+    height: 22px;
+  }
+
+}
+
+@media only screen and (min-width: 850px) {
+
+  h1 {
+  font-size: 26px;
+  }
+
+  body {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  header {
+    padding: 45px 15px;
+  }
+ 
+  .match_list, .betslip{
+    color: darkslategray;
+    width: 30%;
+  }
+
+}

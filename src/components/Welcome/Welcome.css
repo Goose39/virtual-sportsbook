@@ -6,7 +6,6 @@ form {
 .welcome {
   display: flex;
   max-width: 1200px;
-  margin: auto auto;
   flex-direction: column;
 }
 .login_container {
@@ -16,6 +15,7 @@ form {
 
 .instructions {
   padding: 4px;
+  font-size: 16px;
 }
 
 .instructions > p {

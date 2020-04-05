@@ -1,5 +1,6 @@
-import React from 'react'
-import './Navbar.css'
+import React from 'react';
+import LoginOptions from './LoginOptions/LoginOptions';
+import './Navbar.css';
 
 export default function Navbar(props) {
   let totalBets = props.bets.length;
@@ -7,11 +8,15 @@ export default function Navbar(props) {
     <nav>
       <div className="menu_item burger" onClick={() => {}}>Sports</div>
       <div className="menu_item">
-        <div className="user_info">
-          <div className="user_name">{props.user}</div>
-          <div className="balance">${props.balance}</div>
-        </div>
-        <div className="menu_hamburger burger">|||</div>
+        {props.loggedIn? (
+          <>
+            <div className="user_info">
+              <div className="user_name">{props.user}</div>
+              <div className="balance">${props.balance}</div>
+            </div>
+            <div className="menu_hamburger burger">|||</div>
+          </> )
+        : <LoginOptions />}
       </div>
       <div className="menu_item burger">
         <div>Betslip</div>

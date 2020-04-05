@@ -19,7 +19,7 @@ const generateMatch = (sportsData) => {
     leagues.push(key);
   }
   
-  console.log(leagues);
+  // console.log(leagues);
   randomNum = Math.floor(Math.random()*(leagues.length));
   let league = leagues[randomNum];
   // console.log(randomNum);
@@ -30,13 +30,13 @@ const generateMatch = (sportsData) => {
   for (let [key, value] of Object.entries(sportsData[matchSport].leagues[league].teams)) {
     teams.push(key);
   }
-  console.log(teams);
+  // console.log(teams);
   let rand1, rand2;
 
   while (rand1 === rand2) {
     rand1 = Math.floor(Math.random()*(teams.length));
     rand2 = Math.floor(Math.random()*(teams.length));
-    console.log(rand1, rand2);
+    // console.log(rand1, rand2);
   } 
 
   let home = teams[rand1];
@@ -59,7 +59,11 @@ const generateMatch = (sportsData) => {
     away_odd: odds.away_odd,
   }
 
-  return console.log(match)
+  return {
+    sport: matchSport, 
+    league: league, 
+    match: match
+  }
 
 }
 
