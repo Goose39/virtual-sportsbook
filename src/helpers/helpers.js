@@ -28,3 +28,19 @@ export const generateOdds = function(home, away) {
   //Return home and away odds
   return odds
 }
+
+export const findMatch = (matches={}, matchId) => {
+  const allMatches = []
+
+  for (const sport in matches) {
+    for (const league in matches[sport].leagues) {
+      matches[sport].leagues[league].forEach(match => allMatches.push(match))
+    }
+  }
+  
+  for (let i = 0; i < allMatches.length-1; i++) {
+    if (allMatches[i].matchId === matchId) return allMatches[i]
+  }
+
+  return null;
+}

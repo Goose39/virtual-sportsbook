@@ -9,13 +9,6 @@ main {
 }
 
 @media only screen and (min-width: 550px) {
-  
-  .match_list, .betslip{
-    color: darkslategray;
-    display: inline-block;
-    width: 25%;
-    max-width: 300px
-  }
 
   .betslip_count {
     width: 22px;
@@ -37,11 +30,6 @@ main {
 
   header {
     padding: 45px 15px;
-  }
- 
-  .match_list, .betslip{
-    color: darkslategray;
-    width: 30%;
   }
 
 }

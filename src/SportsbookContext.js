@@ -1,10 +1,9 @@
 import React from 'react';
 
-const SportsbookContext = React.createContext( 
+export default React.createContext( 
   {
     bets: [],
+    matches: [],
     removeBet: () => {}
   }
 );
-
-export default SportsbookContext;

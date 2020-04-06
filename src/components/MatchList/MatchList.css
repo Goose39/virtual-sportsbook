@@ -14,7 +14,7 @@
   .match_list, .betslip{
     color: darkslategray;
     display: inline-block;
-    min-width: 25%;
+    width: 25%;
     max-width: 300px
   }
 

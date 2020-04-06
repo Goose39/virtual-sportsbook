@@ -58,12 +58,5 @@ form {
     .user_info {
      margin: auto;
     }
-    
-    .match_list, .betslip{
-      color: darkslategray;
-      display: inline-block;
-      width: 25%;
-      max-width: 300px
-    }
   
   }

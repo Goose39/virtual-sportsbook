@@ -1,4 +1,5 @@
-import { generateOdds } from './helpers'
+import { generateOdds } from './helpers';
+import { v4 as uuidv4 } from 'uuid';
 
 const generateMatch = (sportsData) => {
   const sports = []; 
@@ -21,13 +22,13 @@ const generateMatch = (sportsData) => {
   
   // console.log(leagues);
   randomNum = Math.floor(Math.random()*(leagues.length));
-  let league = leagues[randomNum];
+  let matchLeague = leagues[randomNum];
   // console.log(randomNum);
   // console.log(league);
 
   //Select Random Opponents
   let teams = [];
-  for (let [key, value] of Object.entries(sportsData[matchSport].leagues[league].teams)) {
+  for (let [key, value] of Object.entries(sportsData[matchSport].leagues[matchLeague].teams)) {
     teams.push(key);
   }
   // console.log(teams);
@@ -44,14 +45,17 @@ const generateMatch = (sportsData) => {
   
   // console.log(home, "v", away);
 
-  let homeData = sportsData[matchSport].leagues[league].teams[home];
-  let awayData = sportsData[matchSport].leagues[league].teams[away];
+  let homeData = sportsData[matchSport].leagues[matchLeague].teams[home];
+  let awayData = sportsData[matchSport].leagues[matchLeague].teams[away];
 
   // console.log(homeData, awayData);
 
   let odds = generateOdds(homeData, awayData);
 
   let match = {
+    sport: matchSport, 
+    league: matchLeague,
+    matchId: uuidv4(),
     start_time: new Date("2020-03-11T12:00:00Z"),
     home_team: home,
     away_team: away,
@@ -61,8 +65,8 @@ const generateMatch = (sportsData) => {
 
   return {
     sport: matchSport, 
-    league: league, 
-    match: match
+    league: matchLeague, 
+    match: match, 
   }
 
 }

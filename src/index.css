@@ -68,10 +68,5 @@ footer {
     font-size: 20px;
     line-height: 1.5;
   }
- 
-  .match_list, .betslip{
-    color: darkslategray;
-    width: 30%;
-  }
-
+  
 }

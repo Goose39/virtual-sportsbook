@@ -46,6 +46,9 @@ export const sportsData = {
         },
         "matches": [
           {
+            sport: "Soccer", 
+            league: "Premier League",
+            matchId: "c2a78009-f79f-43c3-86f1-3a3ff1f71160",
             "start_time": new Date("2020-03-10T12:00:00Z"),
             "home_team": "Chelsea",
             "away_team": "Leicester City",
@@ -53,6 +56,7 @@ export const sportsData = {
             "away_odd": 1.9,
           },
           {
+            matchId: "81de1c2f-b142-4cd8-9254-a4a47609c5ed",
             "start_time": new Date("2020-03-10T12:00:00Z"),
             "home_team": "Tottenham",
             "away_team": "Burnley",
@@ -110,6 +114,7 @@ export const sportsData = {
         },
           matches: [
             {
+              "matchId": "a0979c77-e196-4650-b1e5-5b48a8dc1998",
               "start_time": new Date("2020-03-10T12:00:00Z"),
               "home_team": "Broncos",
               "away_team": "Bills",
@@ -117,6 +122,7 @@ export const sportsData = {
               "away_odd": 1.9,
             },
             {
+              "matchId": "ca4233f5-8dbd-44e1-9d97-74992891d76a",
               "start_time": new Date("2020-03-10T12:00:00Z"),
               "home_team": "Patriots",
               "away_team": "Chiefs",
@@ -176,6 +182,7 @@ export const sportsData = {
       },
       matches: [
         {
+          matchId: "89ccd4cd-483a-466d-be05-5dd6a80edd51",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Red Sox",
           "away_team": "Indians",
@@ -183,6 +190,7 @@ export const sportsData = {
           "away_odd": 1.9,
         },
         {
+          matchId: "305ad34d-0e93-41c1-a909-42415966638d",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Yankees",
           "away_team": "Twins",
@@ -240,6 +248,7 @@ export const sportsData = {
       },
       matches: [
         {
+          matchId: "dcc7ac4d-1b0c-4c21-9211-56a37c0d5bab",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Pacers",
           "away_team": "Heat",
@@ -247,6 +256,7 @@ export const sportsData = {
           "away_odd": 1.9,
         },
         {
+          matchId: "ad0439c5-a6a7-401a-a77a-ab1a76df2149",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "76ers",
           "away_team": "Nets",
@@ -304,6 +314,7 @@ export const sportsData = {
       },
     matches: [
       {
+        matchId: "bf23fa06-04d2-4ba9-8d6e-df88b9a8f1b0",
         "start_time": new Date("2020-03-10T12:00:00Z"),
         "home_team": "Penguins",
         "away_team": "Maple Leafs",
@@ -311,11 +322,14 @@ export const sportsData = {
         "away_odd": 1.9,
       },
       {
-        "start_time": new Date("2020-03-10T12:00:00Z"),
-        "home_team": "Lightning",
-        "away_team": "Hurricanes",
-        "home_odd": 1.83,
-        "away_odd": 2.0,
+        sport: "Ice Hockey", 
+          league: "NHL",
+          matchId: "32419935-84bb-4787-8ce7-3435f13f0fdc",
+          "start_time": new Date("2020-03-10T12:00:00Z"),
+          "home_team": "Lightning",
+          "away_team": "Hurricanes",
+          "home_odd": 1.83,
+          "away_odd": 2.0,
       },
     ],
   }
@@ -373,6 +387,9 @@ export const matches = {
     leagues: {
       "Premier League": [
         {
+          sport: "Soccer", 
+          league: "Premier League",
+          matchId: "c2a78009-f79f-43c3-86f1-3a3ff1f71160",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Chelsea",
           "away_team": "Leicester City",
@@ -380,6 +397,9 @@ export const matches = {
           "away_odd": 1.9,
         },
         {
+          sport: "Soccer", 
+          league: "Premier League",
+          matchId: "81de1c2f-b142-4cd8-9254-a4a47609c5ed",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Tottenham",
           "away_team": "Burnley",
@@ -393,6 +413,9 @@ export const matches = {
     leagues: {
       "NFL": [
         {
+          sport: "American Football", 
+          league: "NFL",
+          matchId: "a0979c77-e196-4650-b1e5-5b48a8dc1998",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Broncos",
           "away_team": "Bills",
@@ -400,6 +423,8 @@ export const matches = {
           "away_odd": 1.9,
         },
         {
+          sport: "American Football", 
+          league: "NFL",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Patriots",
           "away_team": "Chiefs",
@@ -413,6 +438,8 @@ export const matches = {
     leagues: {
       "MLB": [
         {
+          sport: "Baseball", 
+          league: "MLB",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Red Sox",
           "away_team": "Indians",
@@ -420,6 +447,8 @@ export const matches = {
           "away_odd": 1.9,
         },
         {
+          sport: "Baseball", 
+          league: "MLB",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Yankees",
           "away_team": "Twins",
@@ -433,6 +462,8 @@ export const matches = {
     leagues: {
       "NBA": [
         {
+          sport: "Basketball", 
+          league: "NBA",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Pacers",
           "away_team": "Heat",
@@ -440,6 +471,8 @@ export const matches = {
           "away_odd": 1.9,
         },
         {
+          sport: "Basketball", 
+          league: "NBA",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "76ers",
           "away_team": "Nets",
@@ -453,6 +486,9 @@ export const matches = {
     leagues: {
       "NHL": [
         {
+          sport: "Ice Hockey", 
+          league: "NHL",
+          matchId: "bf23fa06-04d2-4ba9-8d6e-df88b9a8f1b0",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Penguins",
           "away_team": "Maple Leafs",
@@ -460,6 +496,9 @@ export const matches = {
           "away_odd": 1.9,
         },
         {
+          sport: "Ice Hockey", 
+          league: "NHL",
+          matchId: "32419935-84bb-4787-8ce7-3435f13f0fdc",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Lightning",
           "away_team": "Hurricanes",
