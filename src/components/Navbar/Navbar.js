@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 export default function Navbar(props) {
-  let totalBets = props.bets.length;
   return(
     <>
       <nav>
@@ -18,10 +17,6 @@ export default function Navbar(props) {
             </div> 
           )
           : <LoginOptions />}
-        </div>
-        <div className="menu_item betslip_burger" onClick={() => props.toggleBetslip()}>
-          <div>Betslip</div>
-          {totalBets > 0? <div className="betslip_count">{totalBets}</div>:""}
         </div>
       </nav>
     </>

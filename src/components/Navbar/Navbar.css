@@ -15,20 +15,6 @@ nav {
   cursor: pointer;
 }
 
-.betslip_burger {
-  display: flex;
-}
-
-.betslip_count {
-  display: inline-block;
-  margin-left: 2px;
-  width: 15px;
-  height: 15px;
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-}
-
 @media only screen and (min-width: 550px) {
 
   .burger {
@@ -39,10 +25,6 @@ nav {
     font-size: 16px;
   }
 
-  nav {
-    justify-content: flex-end
-  }
-
   .menu_item {
     font-size: 16px;
   }
@@ -50,11 +32,6 @@ nav {
 }
 
 @media only screen and (min-width: 650px) {
-
-  nav {
-    justify-content: center;
-  }
-  
 
   
 }

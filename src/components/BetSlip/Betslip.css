@@ -4,6 +4,16 @@
   color: white;
 }
 
+.betslip_count {
+  display: inline-block;
+  margin-left: 2px;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+}
+
 .confirmation {
   background-color: rgb(66, 64, 64);
   color: white;
@@ -18,11 +28,59 @@
     font-size: 12px
 }
 
+.betslip_burger {
+  display: flex;
+}
+
+
+.betslip_burger {
+  position: fixed;
+  right: 12px;
+  top: 85px
+}
+
+.betslip_burger.menu_item {
+  height: 50px;
+}
+
+.betslip.mobile_active {
+  right: 0px;
+}
+
 @media only screen and (min-width: 550px) {
 
   .betslip_count {
     width: 22px;
     height: 22px;
   }
-  
+ 
+}
+
+@media only screen and (min-width: 550px) and (max-width: 649px) {
+
+  .betslip {
+    color: darkslategray;
+    width: 35%;
+    max-width: 300px;
+  }
+
+  .betslip_burger {
+    top: 120px
+  }
+}
+
+@media only screen and (min-width: 650px) {
+
+  .betslip_burger {
+    display: none;
+  }
+
+  .betslip {
+    color: darkslategray;
+    display: inline-block;
+    width: 25%;
+    max-width: 300px;
+    position: static;
+  }
+
 }

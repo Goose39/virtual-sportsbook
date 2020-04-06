@@ -15,9 +15,12 @@
 }
 
 .matchlist_burger {
-  position: relative;
-  top: -50px;
+  position: fixed;
+  left: 12px;
+  top: 85px
 }
+
+
 
 @media only screen and (min-width: 550px) {
 
@@ -34,10 +37,7 @@
     color: darkslategray;
     display: inline-block;
     width: 35%;
-    max-width: 300px
-  }
-
-  .match_list {
+    max-width: 300px;
     position: static;
   }
 
@@ -49,10 +49,7 @@
     color: darkslategray;
     display: inline-block;
     width: 25%;
-    max-width: 300px
-  }
-
-  .match_list {
+    max-width: 300px;
     position: static;
   }
 
