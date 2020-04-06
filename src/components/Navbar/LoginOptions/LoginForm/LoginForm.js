@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Input } from '../../Utils/Utils';
 import './LoginForm.css'
 
 export default class LoginForm extends Component {
@@ -26,7 +25,7 @@ export default class LoginForm extends Component {
     const { error } = this.state
     return (
       <form
-        className={`LoginForm${this.props.addClass? this.props.addClass : ""}`}
+        className="login_form"
         onSubmit={this.handleSubmitJwtAuth}
       >
         <div role='alert'>
@@ -36,26 +35,26 @@ export default class LoginForm extends Component {
           <label htmlFor='LoginForm__user_name'>
             User name
           </label>
-          <Input
+          <input
             required
             name='user_name'
             id='LoginForm__user_name'>
-          </Input>
+          </input>
         </div>
         <div className='password'>
           <label htmlFor='LoginForm__password'>
             Password
           </label>
-          <Input
+          <input
             required
             name='password'
             type='password'
             id='LoginForm__password'>
-          </Input>
+          </input>
         </div>
-        <Button type='submit'>
+        <button className="login_button" type='submit'>
           Login
-        </Button>
+        </button>
       </form>
     )
   };

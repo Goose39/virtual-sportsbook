@@ -12,6 +12,10 @@ nav {
 
 .menu_item {
   padding: 10px;
+  cursor: pointer;
+}
+
+.betslip_burger {
   display: flex;
 }
 
@@ -40,8 +44,30 @@ nav {
     display: none;
   }
 
-  nav {
-    justify-content: space-around;
+  .betslip_count {
+    font-size: 16px;
   }
 
+  nav {
+    justify-content: flex-end
+  }
+
+  .menu_item {
+    font-size: 16px;
+  }
+
+}
+
+@media only screen and (min-width: 650px) {
+
+  .betslip_burger {
+    display: none;
+  }
+
+  nav {
+    justify-content: center;
+  }
+  
+
+  
 }

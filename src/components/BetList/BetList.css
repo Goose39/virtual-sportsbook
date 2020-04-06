@@ -1,0 +1,36 @@
+.bet_history {
+  width: 100%;
+}
+
+.bet_line {
+  font-size: 12px;
+}
+
+.history > thead {
+  font-size: 16px;
+  margin: 0 auto
+}
+
+@media only screen and (min-width: 650px) {
+
+  .betslip  {
+    color: darkslategray;
+    display: inline-block;
+    width: 25%;
+    max-width: 300px
+  }
+
+}
+
+@media only screen and (min-width: 800px) {
+
+  .bet_line {
+    font-size: 16px;
+  }
+
+  .history > thead {
+    font-size: 18px;
+  }
+  
+}
+

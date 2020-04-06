@@ -1,12 +1,17 @@
 .betslip > header {
-  background-color: rgb(231, 229, 229);
+  background-color: rgb(66, 64, 64);
   padding: 5px;
+  color: white;
 }
 
 .confirmation {
-  background-color: grey;
+  background-color: rgb(66, 64, 64);
   color: white;
   cursor: pointer;
+}
+
+.confirmation:hover {
+  background-color: seagreen;
 }
 
 .return {

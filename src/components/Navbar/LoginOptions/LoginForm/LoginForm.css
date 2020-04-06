@@ -1,12 +1,11 @@
-.LoginForm {
-  padding: 10px;
-}
-
-.table_login {
+.login_form {
+  padding: 5px;
   position: absolute;
+  border-radius: 6px;
+  border: 2px grey solid;
 }
 
-.LoginForm > .Button {
+.login_button {
   float: right
 }
 
@@ -17,7 +16,7 @@
 }
 
 @media only screen and (min-width: 500px) {
-  .LoginForm {
+  .login_form {
     max-width: 400px;
     padding: 25px;
   }

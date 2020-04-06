@@ -8,7 +8,7 @@ import Navbar from '../Navbar/Navbar';
 import MatchList from '../MatchList/MatchList';
 import Betslip from '../BetSlip/Betslip';
 import MatchView from '../MatchView/MatchView';
-import BetList from '../BetHistory/BetList/BetList';
+import BetList from '../BetList/BetList';
 import generateMatch from '../../helpers/generateMatch';
 import { v4 as uuidv4 } from 'uuid';
 import { sportsData } from "../../store";
@@ -19,9 +19,24 @@ class App extends React.Component {
   state = {
     user: "Guest", 
     balance: 1000,
+    betslipDisplay: true, 
+    sportListDisplay: false,
     bets: [],
     matches: matches,
-    betHistory: [],
+    betHistory: [
+      {
+        betId: uuidv4(),
+        sport: "Soccer",
+        league: "Premier League", 
+        team: "Chelsea", 
+        price: 1.9, 
+        stake: 1000,
+        return: 1900, 
+        matchId: "c2a78009-f79f-43c3-86f1-3a3ff1f71160",
+        matchDesc: "Chelsea v Leicester City",
+        status: "Open",
+      },
+    ],
     selectedMatchId: ""
   }
 
@@ -38,7 +53,7 @@ class App extends React.Component {
     })
   }
 
-  createBet = (sport, league, team, price, matchId) => {
+  createBet = (sport, league, team, price, matchId, matchDesc) => {
     const newBets = [...this.state.bets];
     newBets.push({
       betId: uuidv4(),
@@ -48,6 +63,7 @@ class App extends React.Component {
       price: price, 
       betAmount: 0, 
       matchId: matchId,
+      matchDesc: matchDesc,
     })
 
     this.setState({
@@ -76,6 +92,21 @@ class App extends React.Component {
     });
   }
 
+  removeBet = (betId) => {
+    const newBets = [...this.state.bets];
+    
+    for (let i = 0; i < newBets.length; i++) {
+      if ( newBets[i].betId == betId)
+        {
+         newBets.splice(i, 1)
+        }
+    }
+
+    this.setState({
+      bets: newBets
+    })
+  }
+
   handleSetUser = (user, balance) => {
     this.setState({
       user: user,
@@ -86,6 +117,9 @@ class App extends React.Component {
   render() {
     const contextValue = {
       createBet: this.createBet,
+      removeBet: this.removeBet,
+      handleBetAmount: this.handleBetAmount,
+      bets: this.state.bets,
       matches: this.state.matches,
     }
   return (
@@ -97,7 +131,7 @@ class App extends React.Component {
         <div className='App'>
           <Route
             path='/'
-            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets}/>}
+            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn="true"/>}
           />
           <main>          
             <MatchList matches={this.state.matches}/>
@@ -116,13 +150,13 @@ class App extends React.Component {
                 <Route
                   path='/history'
                   render={() => <BetList 
-                                  bets={this.state.bets} 
-                                  matches={this.state.matches}  
+                                  bets={this.state.betHistory} 
+                                  display={this.state.BetslipDisplay} 
                                 />}
                 />
               </Switch>
             </div>
-            <Betslip bets={this.state.bets} handleBetAmount={this.handleBetAmount}/>
+            <Betslip bets={this.state.bets} handleBetAmount={this.handleBetAmount} removeBet={this.removeBet} />
           </main>
         </div>
       </>

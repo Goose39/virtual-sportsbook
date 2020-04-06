@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Input, Required } from '../../Utils/Utils';
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -53,7 +52,7 @@ export default class RegistrationForm extends Component {
     const { error } = this.state
     return (
       <form
-        className='RegistrationForm'
+        className='login_form'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
@@ -61,51 +60,40 @@ export default class RegistrationForm extends Component {
         </div>
         <div className='full_name'>
           <label htmlFor='RegistrationForm__full_name'>
-            Full name <Required />
+            Full name
           </label>
-          <Input
+          <input 
             name='full_name'
             type='text'
             required
             id='RegistrationForm__full_name'>
-          </Input>
+          </input>
         </div>
         <div className='user_name'>
           <label htmlFor='RegistrationForm__user_name'>
-            User name <Required />
+            User name 
           </label>
-          <Input
+          <input
             name='user_name'
             type='text'
             required
             id='RegistrationForm__user_name'>
-          </Input>
+          </input>
         </div>
         <div className='password'>
           <label htmlFor='RegistrationForm__password'>
-            Password <Required />
+            Password
           </label>
-          <Input
+          <input
             name='password'
             type='password'
             required
             id='RegistrationForm__password'>
-          </Input>
+          </input>
         </div>
-        <div className='nick_name'>
-          <label htmlFor='RegistrationForm__nick_name'>
-            Nickname <Required />
-          </label>
-          <Input
-            name='nick_name'
-            type='text'
-            required
-            id='RegistrationForm__nick_name'>
-          </Input>
-        </div>
-        <Button id='register' type='submit'>
+        <button id='register' type='submit' className="login_button">
           Register
-        </Button>
+        </button>
       </form>
     )
   };

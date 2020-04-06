@@ -9,9 +9,20 @@
   overflow: hidden;
 }
 
-@media only screen and (min-width: 550px) {
+@media only screen and (min-width: 550px) and (max-width: 649px) {
 
-  .match_list, .betslip{
+  .match_list {
+    color: darkslategray;
+    display: inline-block;
+    width: 35%;
+    max-width: 300px
+  }
+
+}
+
+@media only screen and (min-width: 650px) {
+
+  .match_list {
     color: darkslategray;
     display: inline-block;
     width: 25%;

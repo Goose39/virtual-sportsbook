@@ -4,8 +4,9 @@ main {
 
 .console {
   display: flex;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
   justify-content: space-between;
+  width: 100%;
 }
 
 @media only screen and (min-width: 550px) {
@@ -13,6 +14,18 @@ main {
   .betslip_count {
     width: 22px;
     height: 22px;
+  }
+
+  .console {
+    width: 75%;
+  }
+
+}
+
+@media only screen and (min-width: 650px) {
+
+  .console {
+    width: 50%;
   }
 
 }
@@ -30,6 +43,10 @@ main {
 
   header {
     padding: 45px 15px;
+  }
+
+  .console {
+    width: 60%;
   }
 
 }

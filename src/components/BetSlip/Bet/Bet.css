@@ -1,24 +1,55 @@
-.bet_tournament {
+.bet {
+  display: flex;
+  border: grey 1px solid;
+}
+
+.remove_bet {
+  padding: 5px 5px 0px 2px;
+  font-size: 14px;
+}
+
+.remove_bet:hover {
+  background-color: rgb(206, 28, 28);
+  color: white;
+}
+
+.bet_team {
   font-size: 12px;
+  font-weight: bold;
+}
+
+.bet_league {
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .bet_desc {
   display: flex;
+  flex-direction: column;
   font-size: 10px;
-  padding: 5px;
-}
-
-.bet_team, .bet_price {
-  padding-left: 5px;
+  padding-top: 5px;
+  width: 65%;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .bet_amount {
+  position: relative;
+  top: -3px;
   width: 50px;
-  font-size: 10px;
+  font-size: 14px;
+  
 }
 
 
 .bet_size {
   font-size: 16px
+}
+
+.bet_price {
+  position: relative;
+  top: 4px;
+  font-size: 14px;
+  font-weight: bold;
 }
 

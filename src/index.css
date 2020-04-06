@@ -13,9 +13,11 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.2;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
-header, .login_options {
+header {
   background-color: #bbb;
   padding: 6px;
 }
@@ -46,8 +48,6 @@ header, .login_options {
 
 }
 
-
-
 .selected {
   color: white; 
 }
@@ -68,5 +68,5 @@ footer {
     font-size: 20px;
     line-height: 1.5;
   }
-  
+
 }

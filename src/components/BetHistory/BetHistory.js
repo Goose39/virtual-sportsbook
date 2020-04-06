@@ -11,7 +11,7 @@ export default class Sportsbook extends Component {
         <Navbar user={this.props.user} balance={this.props.balance} bets={this.props.bets}/>
         <div className="console">
           <MatchList matches={this.props.matches}/>
-          <BetList />
+          <BetList betHistory={props.betHistory}/>
           <Betslip bets={this.props.bets} />
         </div>
       </>
