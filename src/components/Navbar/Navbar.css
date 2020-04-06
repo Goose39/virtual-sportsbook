@@ -1,7 +1,7 @@
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   background-color: grey;
 }
 
@@ -15,29 +15,6 @@ nav {
   cursor: pointer;
 }
 
-.betslip_burger {
-  display: flex;
-}
-
-.menu_hamburger {
-  margin-left: 10px;
-  -webkit-transform: rotate(90deg); /* Safari and Chrome */
-  -moz-transform: rotate(90deg);   /* Firefox */
-  -ms-transform: rotate(90deg);   /* IE 9 */
-  -o-transform: rotate(90deg);   /* Opera */
-  transform: rotate(90deg);
-}
-
-.betslip_count {
-  display: inline-block;
-  margin-left: 2px;
-  width: 15px;
-  height: 15px;
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-}
-
 @media only screen and (min-width: 550px) {
 
   .burger {
@@ -48,10 +25,6 @@ nav {
     font-size: 16px;
   }
 
-  nav {
-    justify-content: flex-end
-  }
-
   .menu_item {
     font-size: 16px;
   }
@@ -59,15 +32,6 @@ nav {
 }
 
 @media only screen and (min-width: 650px) {
-
-  .betslip_burger {
-    display: none;
-  }
-
-  nav {
-    justify-content: center;
-  }
-  
 
   
 }
