@@ -25,14 +25,17 @@ export default function Betslip(props) {
   }
 
   return(
-    <section class="betslip">
-      <header>Betslip</header>
-      {bets.length > 0? bets: "Place a bet"}
-      {bets.length > 0?  <div class="confirmation" onClick={() => props.placeBet()}>
-                    <div class="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
-                    <div class="return">{`Total return: $${betReturn.toString()}`}</div>
-                  </div>
-                  : ""}
-    </section>
+    <>
+      <div className="betslip_burger menu_item">Betslip</div>
+      <section class="betslip">
+        <header>Betslip</header>
+        {bets.length > 0? bets: "Place a bet"}
+        {bets.length > 0?  <div class="confirmation" onClick={() => props.placeBet()}>
+                      <div class="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
+                      <div class="return">{`Total return: $${betReturn.toString()}`}</div>
+                    </div>
+                    : ""}
+      </section>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   background-color: grey;
 }
 
@@ -17,15 +17,6 @@ nav {
 
 .betslip_burger {
   display: flex;
-}
-
-.menu_hamburger {
-  margin-left: 10px;
-  -webkit-transform: rotate(90deg); /* Safari and Chrome */
-  -moz-transform: rotate(90deg);   /* Firefox */
-  -ms-transform: rotate(90deg);   /* IE 9 */
-  -o-transform: rotate(90deg);   /* Opera */
-  transform: rotate(90deg);
 }
 
 .betslip_count {
@@ -59,10 +50,6 @@ nav {
 }
 
 @media only screen and (min-width: 650px) {
-
-  .betslip_burger {
-    display: none;
-  }
 
   nav {
     justify-content: center;

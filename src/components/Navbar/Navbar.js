@@ -8,7 +8,6 @@ export default function Navbar(props) {
   return(
     <>
       <nav>
-        <div className="menu_item burger" onClick={() => props.toggleSportsMenu()}>Sports</div>
         <div className="menu_item">
           {props.loggedIn? 
           (
