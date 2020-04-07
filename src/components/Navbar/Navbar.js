@@ -12,7 +12,7 @@ export default function Navbar(props) {
           (
             <div className="user_info">
               <div className="user_name">{props.user}</div>
-              <div className="balance">${props.balance}</div>
+              <div className="balance">{props.balance > 0? `$${props.balance }`: <a onClick={() => props.reloadBalance()}>Reload Balance</a>}</div>
               <Link to="/history">Bet History</Link>
             </div> 
           )

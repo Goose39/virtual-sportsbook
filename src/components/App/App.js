@@ -105,9 +105,11 @@ class App extends React.Component {
   }
 
   placeBet = (betTotal) => {
+
     if (betTotal > 0) {
       let bets = [...this.state.bets];
       let newHistory = [...this.state.betHistory];
+      let newBalance = this.state.balance;
 
       for (let i=0; i < bets.length; i++) {
         if (bets[i].stake > 0) {
@@ -129,7 +131,8 @@ class App extends React.Component {
 
       this.setState({
         betHistory: newHistory,
-        bets: []
+        bets: [], 
+        balance: newBalance - betTotal, 
       })
     }
   }
@@ -140,6 +143,12 @@ class App extends React.Component {
       balance: balance
     });
   };
+
+  reloadBalance = () => {
+    this.setState ({
+      balance: 1000,
+    }) 
+  }
 
   render() {
     const contextValue = {
@@ -158,7 +167,7 @@ class App extends React.Component {
         <div className='App'>
           <Route
             path='/'
-            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn="true"/>}
+            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn="true" reloadBalance={this.reloadBalance} />}
           />
           <main>          
             <MatchList matches={this.state.matches}/>
