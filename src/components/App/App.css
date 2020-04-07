@@ -32,19 +32,6 @@ main {
 
 @media only screen and (min-width: 850px) {
 
-  h1 {
-  font-size: 26px;
-  }
-
-  body {
-    font-size: 20px;
-    line-height: 1.5;
-  }
-
-  header {
-    padding: 45px 15px;
-  }
-
   .console {
     width: 60%;
   }

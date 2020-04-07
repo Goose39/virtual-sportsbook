@@ -6,7 +6,7 @@ export default function BetList(props) {
 
   if (props.bets) {
     bets = props.bets.map(bet => ( 
-      <tr className="bet_line">
+      <tr key={bet.betId} className="bet_line">
         <td>{bet.matchDesc}</td>
         <td>{bet.price.toString()}</td>
         <td>{`$${bet.stake.toString()}`}</td>
@@ -18,7 +18,7 @@ export default function BetList(props) {
   return(
     <div className="bet_history">
       <header>Betting History</header>
-      <table class="history">
+      <table className="history">
         <thead>
           <tr>
             <th>Details</th>

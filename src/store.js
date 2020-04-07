@@ -182,7 +182,7 @@ export const sportsData = {
       },
       matches: [
         {
-          matchId: "89ccd4cd-483a-466d-be05-5dd6a80edd51",
+          "matchId": "89ccd4cd-483a-466d-be05-5dd6a80edd51",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Red Sox",
           "away_team": "Indians",
@@ -190,7 +190,7 @@ export const sportsData = {
           "away_odd": 1.9,
         },
         {
-          matchId: "305ad34d-0e93-41c1-a909-42415966638d",
+          "matchId": "305ad34d-0e93-41c1-a909-42415966638d",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Yankees",
           "away_team": "Twins",
@@ -377,8 +377,88 @@ export const oddsPairs = [
     underDog: 2.75
   },
   {
-    fav: 1.33,
+    fav: 1.36,
     underDog: 3
+  },
+  {
+    fav: 1.33,
+    underDog: 3.3
+  },
+  {
+    fav: 1.3,
+    underDog: 3.25
+  },
+  {
+    fav: 1.29,
+    underDog: 3.5
+  },
+  {
+    fav: 1.25,
+    underDog: 3.75
+  },
+  {
+    fav: 1.22,
+    underDog: 4.0
+  },
+  {
+    fav: 1.2,
+    underDog: 4.33
+  },
+  {
+    fav: 1.18,
+    underDog: 4.5
+  },
+  {
+    fav: 1.17,
+    underDog: 5.0
+  },
+  {
+    fav: 1.14,
+    underDog: 5.5
+  },
+  {
+    fav: 1.13,
+    underDog: 6
+  },
+  {
+    fav: 1.11,
+    underDog: 6.5
+  },
+  {
+    fav: 1.10,
+    underDog: 7.0
+  },
+  {
+    fav: 1.08,
+    underDog: 8.0
+  },
+  {
+    fav: 1.07,
+    underDog: 9.0
+  },
+  {
+    fav: 1.06,
+    underDog: 10.0
+  },
+  {
+    fav: 1.05,
+    underDog: 11.0
+  },
+  {
+    fav: 1.04,
+    underDog: 13.0
+  },
+  {
+    fav: 1.03,
+    underDog: 17.0
+  },
+  {
+    fav: 1.02,
+    underDog: 21.0
+  },
+  {
+    fav: 1.01,
+    underDog: 26.0
   },
 ]
 
@@ -425,6 +505,7 @@ export const matches = {
         {
           sport: "American Football", 
           league: "NFL",
+          matchId: "b53386e5-94e7-48f9-bbcf-bab6f26b95cc",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Patriots",
           "away_team": "Chiefs",
@@ -440,6 +521,7 @@ export const matches = {
         {
           sport: "Baseball", 
           league: "MLB",
+          matchId: "23306082-04dd-437d-a39e-6e18269116b0",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Red Sox",
           "away_team": "Indians",
@@ -449,6 +531,7 @@ export const matches = {
         {
           sport: "Baseball", 
           league: "MLB",
+          matchId: "d4a458a3-fece-41b1-afe7-3354bed045b8",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Yankees",
           "away_team": "Twins",
@@ -464,6 +547,7 @@ export const matches = {
         {
           sport: "Basketball", 
           league: "NBA",
+          matchId: "a179b1c4-3049-4fb6-bfcf-a576223c03f2",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "Pacers",
           "away_team": "Heat",
@@ -473,6 +557,7 @@ export const matches = {
         {
           sport: "Basketball", 
           league: "NBA",
+          matchId: "4199a64b-bd3f-4728-8a19-83582f833a76",
           "start_time": new Date("2020-03-10T12:00:00Z"),
           "home_team": "76ers",
           "away_team": "Nets",

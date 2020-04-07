@@ -9,7 +9,6 @@ export default class Betslip extends React.Component {
   }
   
   toggleMobileMenu = () => {
-    console.log("fires toggleMobileMenu")
     let change = !this.state.mobile_active
 
     this.setState({
@@ -32,12 +31,12 @@ export default class Betslip extends React.Component {
           betId={bet.betId}
           team={bet.team} 
           price={bet.price} 
-          betAmount={bet.betAmount} 
+          stake={bet.stake} 
           matchDesc={bet.matchDesc}
-          handleBetAmount={this.props.handleBetAmount}
+          handleStake={this.props.handleStake}
           removeBet={this.props.removeBet} />))
-        betTotal += bet.betAmount;
-        betReturn += bet.betAmount*bet.price;
+        betTotal += parseInt(bet.stake);
+        betReturn += Math.floor(bet.stake*bet.price*100)/100;
       });
     }
 
@@ -47,14 +46,22 @@ export default class Betslip extends React.Component {
           <div>Betslip</div>
           {totalBets > 0? <div className="betslip_count">{totalBets}</div>:""}
         </div>
-        <section class={`betslip ${this.state.mobile_active? "mobile_active": ""}`}>
+        <section className={`betslip ${this.state.mobile_active? "mobile_active": ""}`}>
           <header>Betslip</header>
           {bets.length > 0? bets: "Place a bet"}
-          {bets.length > 0?  <div class="confirmation" onClick={() => this.props.placeBet()}>
-                        <div class="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
-                        <div class="return">{`Total return: $${betReturn.toString()}`}</div>
-                      </div>
-                      : ""}
+          {bets.length > 0 && betTotal <= this.props.balance?  
+            <div className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
+              <div className="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
+              <div className="return">{`Total return: $${betReturn.toString()}`}</div>
+            </div>
+          : ""}
+          {betTotal > this.props.balance?  
+            <div className="confirmation_disabled">
+              <div className="bet_size">{`Total Bet: $${betTotal.toString()}`}</div>
+              <div className="return">Bet is larger than your balance.</div>
+            </div>
+          : ""}
+
         </section>
       </>
     );

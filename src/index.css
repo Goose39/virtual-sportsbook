@@ -29,7 +29,7 @@ header {
   }
 
   body {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.5;
   }
 
@@ -48,15 +48,9 @@ header {
 
 }
 
-.selected {
-  color: white; 
-}
-
 footer {
   background-color: grey;
 }
-
-
 
 @media only screen and (min-width: 850px) {
 
@@ -65,8 +59,12 @@ footer {
   }
 
   body {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
+  }
+
+  header {
+    padding: 25px 15px;
   }
 
 }

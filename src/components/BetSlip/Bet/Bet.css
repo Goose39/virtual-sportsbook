@@ -36,8 +36,9 @@
 .bet_amount {
   position: relative;
   top: 0px;
-  width: 50px;
+  width: 60px;
   font-size: 14px;
+  text-align: right;
 }
 
 
@@ -50,14 +51,15 @@
   top: 4px;
   font-size: 14px;
   font-weight: bold;
+  min-width: 28px;
+  text-align: right;
 }
 
 @media only screen and (min-width: 550px) {
 
   .bet_amount {
     position: relative;
-    top: -3px;
-    width: 50px;
+    top: 0px;
     font-size: 14px;
   }
  

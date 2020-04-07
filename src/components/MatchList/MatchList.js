@@ -20,6 +20,7 @@ export default class MatchList extends React.Component {
     let sports = Object.keys(this.props.matches)
                 .map(sport => 
                   <Sport 
+                    key={sport}
                     sport={sport} 
                     leagues={this.props.matches[sport].leagues}
                   /> )     

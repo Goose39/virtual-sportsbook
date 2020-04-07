@@ -14,7 +14,7 @@ export default function Bet(props) {
         </div>
         <div className="bet_price">{props.price}</div>
         <div>
-          <input className="bet_amount" type="text" value={props.betAmount} onChange={(e) => props.handleBetAmount(props.betId, e.target.value)} />
+          <input className="bet_amount" type="text" value={props.stake} onChange={(e) => props.handleStake(props.betId, e.target.value)} />
         </div>
       </div>
     </>

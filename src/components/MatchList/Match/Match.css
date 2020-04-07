@@ -1,3 +1,8 @@
 .match {
   font-size: 14px;
 }
+
+.match > a {
+  color: #545151;
+  text-decoration: none;
+}

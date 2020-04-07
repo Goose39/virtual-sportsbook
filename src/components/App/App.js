@@ -61,7 +61,7 @@ class App extends React.Component {
       league: league, 
       team: team, 
       price: price, 
-      betAmount: 0, 
+      stake: 0, 
       matchId: matchId,
       matchDesc: matchDesc,
     })
@@ -71,22 +71,19 @@ class App extends React.Component {
     })
   }
 
-  handleBetAmount = (betId, betAmount) => {
-    console.log(betId, betAmount)
+  handleStake = (betId, stake) => {
     let newBets = [...this.state.bets];
-    console.log(newBets)
 
     for (let i = 0; i < newBets.length; i++) {
-      console.log(newBets[i].betId, betId)
-      if ( newBets[i].betId == betId)
-        {
-          console.log(newBets[i])
-          newBets[i].betAmount = parseInt(betAmount);
+      if ( newBets[i].betId == betId ) {
+          if (!isNaN(stake)) {
+            newBets[i].stake = stake;
+          } else {
+            newBets[i].stake = 0;
+          } 
         }
-    }
-
-    console.log(newBets)
-
+      }
+    
     this.setState({
       bets: newBets
     });
@@ -105,6 +102,36 @@ class App extends React.Component {
     this.setState({
       bets: newBets
     })
+  }
+
+  placeBet = (betTotal) => {
+    if (betTotal > 0) {
+      let bets = [...this.state.bets];
+      let newHistory = [...this.state.betHistory];
+
+      for (let i=0; i < bets.length; i++) {
+        if (bets[i].stake > 0) {
+          let bet = {
+            betId: bets[i].betId,
+            sport: bets[i].sport,
+            league: bets[i].league, 
+            team: bets[i].team, 
+            price: 1.9, 
+            stake: bets[i].stake,
+            return: bets[i].price*bets[i].stake, 
+            matchId: bets[i].matchId,
+            matchDesc: bets[i].matchDesc,
+            status: "Open",
+          }
+          newHistory.push(bet)
+        }
+      }
+
+      this.setState({
+        betHistory: newHistory,
+        bets: []
+      })
+    }
   }
 
   handleSetUser = (user, balance) => {
@@ -149,14 +176,11 @@ class App extends React.Component {
                 />
                 <Route
                   path='/history'
-                  render={() => <BetList 
-                                  bets={this.state.betHistory} 
-                                  display={this.state.BetslipDisplay} 
-                                />}
+                  render={() => <BetList bets={this.state.betHistory} />}
                 />
               </Switch>
             </div>
-            <Betslip bets={this.state.bets} handleBetAmount={this.handleBetAmount} removeBet={this.removeBet} />
+            <Betslip bets={this.state.bets} balance={this.state.balance} handleStake={this.handleStake} removeBet={this.removeBet} placeBet={this.placeBet} />
           </main>
         </div>
       </>

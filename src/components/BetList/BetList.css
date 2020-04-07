@@ -11,7 +11,7 @@
 }
 
 .history > thead {
-  font-size: 16px;
+  font-size: 14px;
   margin: 0 auto
 }
 
@@ -26,10 +26,10 @@
 
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 850px) {
 
   .bet_line {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .history > thead {
