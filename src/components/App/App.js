@@ -165,7 +165,7 @@ class App extends React.Component {
             <div className="console">
               <Switch>
                 <Route
-                  path='/welcome'
+                  path='/'
                   exact
                   component={Welcome} 
                   />}
