@@ -23,8 +23,8 @@ export default class LoginForm extends React.Component {
       password: password.value,
     })
     .then(res => {
-      console.log("login res",res)
-      this.props.handleSetUser(res.user_name, res.user_balance);
+      const { user_name, user_balance } = TokenService.readJwtToken();
+      this.props.handleSetUser(user_name, user_balance);
       user_name.value = ''
       password.value = ''
     })

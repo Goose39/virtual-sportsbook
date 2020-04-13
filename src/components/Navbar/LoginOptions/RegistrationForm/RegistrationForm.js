@@ -49,7 +49,8 @@ export default class RegistrationForm extends Component {
           password: newUser.password
         })
         .then(result => {
-          this.props.handleSetUser(result.user_name,result.balance);
+          const { user_name, user_balance } = TokenService.readJwtToken()
+          this.props.handleSetUser(user_name, user_balance);
           full_name.value = '';
           nick_name.value = '';
           user_name.value = '';

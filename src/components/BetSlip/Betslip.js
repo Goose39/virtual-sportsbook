@@ -49,19 +49,23 @@ export default class Betslip extends React.Component {
         <section className={`betslip ${this.state.mobile_active? "mobile_active": ""}`}>
           <header>Betslip</header>
           {bets.length > 0? bets: "Place a bet"}
-          {bets.length > 0 && betTotal <= this.props.balance?  
+          {bets.length > 0 && betTotal <= this.props.balance && this.props.loggedIn?  
             <div className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
               <div className="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
               <div className="return">{`Total return: $${betReturn.toString()}`}</div>
             </div>
           : ""}
-          {betTotal > this.props.balance?  
+          {betTotal > this.props.balance && this.props.loggedIn?  
             <div className="confirmation_disabled">
               <div className="bet_size">{`Total Bet: $${betTotal.toString()}`}</div>
               <div className="return">Bet is larger than your balance.</div>
             </div>
           : ""}
-
+          {!this.props.loggedIn && bets.length > 0?  
+            <div className="confirmation_disabled">
+              <div>Login to place a bet</div>
+            </div>
+          : ""}
         </section>
       </>
     );

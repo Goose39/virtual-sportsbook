@@ -8,7 +8,6 @@ export default class MatchList extends React.Component {
   }
   
   toggleMobileMenu = () => {
-    console.log("fires toggleMobileMenu")
     let change = !this.state.mobile_active
 
     this.setState({
@@ -16,15 +15,24 @@ export default class MatchList extends React.Component {
     })
   }
 
+  isEmpty = (obj) => {
+    return Object.keys(obj).length === 0;
+  }
+
   render () {
-    let sports = Object.keys(this.props.matches)
+
+    let sports;
+
+    if (!this.isEmpty(this.props.matches)) {
+      sports = Object.keys(this.props.matches)
                 .map(sport => 
                   <Sport 
                     key={sport}
                     sport={sport} 
                     leagues={this.props.matches[sport].leagues}
-                  /> )     
-
+                  /> )    
+    } else sports = "No upcoming matches to display, check back later for updated match list"
+     
     return(
       <>
         <div className="matchlist_burger menu_item" onClick={() => this.toggleMobileMenu()}>Sports</div>

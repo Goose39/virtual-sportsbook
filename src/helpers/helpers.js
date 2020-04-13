@@ -20,7 +20,7 @@ export const generateOdds = function(home, away) {
     teamDiff = oddsPairs.length-1
   }
 
-  console.log(teamDiff)
+  // console.log(teamDiff)
 
   //Get odds pair for stregth difference
   let pair = oddsPairs[teamDiff]

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
-import "./App.css"
+import "./App.css";
 import SportsbookContext from "../../SportsbookContext";
 import Welcome from '../Welcome/Welcome';
 import Navbar from '../Navbar/Navbar';
@@ -9,11 +9,9 @@ import MatchList from '../MatchList/MatchList';
 import Betslip from '../BetSlip/Betslip';
 import MatchView from '../MatchView/MatchView';
 import BetList from '../BetList/BetList';
-import generateMatch from '../../helpers/generateMatch';
 import { v4 as uuidv4 } from 'uuid';
-import { sportsData } from "../../store";
-import { matches } from "../../store";
-import TokenService from "../../services/token-service"
+import TokenService from '../../services/token-service';
+import MatchesApiService from '../../services/matches-api-service';
 
 class App extends React.Component {
 
@@ -24,7 +22,7 @@ class App extends React.Component {
     betslipDisplay: true, 
     sportListDisplay: false,
     bets: [],
-    matches: matches,
+    matches: {},
     betHistory: [
       {
         betId: uuidv4(),
@@ -47,23 +45,17 @@ class App extends React.Component {
     if (TokenService.hasAuthToken()) {
       const{ user_name, user_balance } = TokenService.readJwtToken()
       console.log(TokenService.readJwtToken())
-        this.setState({
-          user: user_name, 
-          balance: user_balance, 
-          loggedIn: true
-        })
-      } 
+      this.setState({
+        user: user_name, 
+        balance: user_balance, 
+        loggedIn: true
+      })
+    } 
 
-    const newMatches = {...this.state.matches};
-    for (let i = 1; i <= 50; i++) {
-      let newMatch = generateMatch(sportsData);
-      let {sport, league, match} = newMatch;
-      newMatches[sport].leagues[league].push(match);
-    }
-
-    this.setState({
-      matches: newMatches
-    })
+      MatchesApiService.getMatches()
+      .then(res => this.setState({
+          matches: res
+        }))  
   }
 
   createBet = (sport, league, team, price, matchId, matchDesc) => {
@@ -212,7 +204,14 @@ class App extends React.Component {
                 />
               </Switch>
             </div>
-            <Betslip bets={this.state.bets} balance={this.state.balance} handleStake={this.handleStake} removeBet={this.removeBet} placeBet={this.placeBet} />
+            <Betslip 
+              bets={this.state.bets} 
+              balance={this.state.balance} 
+              handleStake={this.handleStake} 
+              removeBet={this.removeBet} 
+              placeBet={this.placeBet} 
+              loggedIn={this.state.loggedIn}
+            />
           </main>
         </div>
       </>
