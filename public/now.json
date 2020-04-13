@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "alias": "virtual-sportsbook",
+  "name": "virtual-sportsbook",
+  "routes": [
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+  ]
+}

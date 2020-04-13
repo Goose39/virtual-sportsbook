@@ -13,10 +13,10 @@ export default function Navbar(props) {
             <div className="user_info">
               <div className="user_name">{props.user}</div>
               <div className="balance">{props.balance > 0? `$${props.balance }`: <a onClick={() => props.reloadBalance()}>Reload Balance</a>}</div>
-              <Link to="/history">Bet History</Link>
+              <Link to="/history">Bet History</Link><div className="login_option" type="button" onClick={() => props.handleUserlogout()}>Logout</div>
             </div> 
           )
-          : <LoginOptions />}
+          : <LoginOptions handleSetUser={props.handleSetUser} />}
         </div>
       </nav>
     </>

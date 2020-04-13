@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import './LoginForm.css'
+import React from 'react';
+import './LoginForm.css';
+import TokenService from '../../../../services/token-service';
+import AuthApiService from '../../../../services/auth-api-service';
 
-export default class LoginForm extends Component {
+export default class LoginForm extends React.Component {
   static defaultProps = {
     onLoginSuccess: () => {}, 
     handleSetUser: () => {}
@@ -11,14 +13,27 @@ export default class LoginForm extends Component {
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
-    
+    TokenService.clearAuthToken();
     this.setState({ error: null })
+
     const { user_name, password } = ev.target
 
-    this.props.handleSetUser(user_name.value, 1000)
-
-    this.props.onLoginSuccess()
-
+    AuthApiService.postLogin({
+      user_name: user_name.value,
+      password: password.value,
+    })
+    .then(res => {
+      console.log("login res",res)
+      this.props.handleSetUser(res.user_name, res.user_balance);
+      user_name.value = ''
+      password.value = ''
+    })
+    .then(res => {
+      this.props.onLoginSuccess()
+    })
+    .catch(res => {
+      this.setState({ error: res.error })
+    })
   };
 
   render() {

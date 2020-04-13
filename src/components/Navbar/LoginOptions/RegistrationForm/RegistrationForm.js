@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import TokenService from '../../../../services/token-service';
+import AuthApiService from '../../../../services/auth-api-service';
+import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -29,21 +32,35 @@ export default class RegistrationForm extends Component {
     ev.preventDefault()
     // Disable button on 1st click, users may click twice due to slow server response time.
     document.getElementById("register").disabled = true;
-    
+    TokenService.clearAuthToken();
     const { full_name, nick_name, user_name, password } = ev.target
-    const newUser = { full_name: full_name.value, nick_name: nick_name.value, user_name: user_name.value, password: password.value }
+    const newUser = { full_name: full_name.value, user_name: user_name.value, password: password.value }
 
     this.setState({ error: null })
 
     const passwordError = this.validatePassword(newUser.password)
     // Check for valid password before proceeding with POST request
     if (!passwordError) {
-      this.props.handleSetUser(user_name.value, 1000)
-      full_name.value = ''
-      nick_name.value = ''
-      user_name.value = ''
-      password.value = ''
-      this.props.onRegistrationSuccess()
+
+      AuthApiService.postUser(newUser)
+      .then(res => {
+        return AuthApiService.postLogin({
+          user_name: newUser.user_name, 
+          password: newUser.password
+        })
+        .then(result => {
+          this.props.handleSetUser(result.user_name,result.balance);
+          full_name.value = '';
+          nick_name.value = '';
+          user_name.value = '';
+          password.value = '';
+          this.props.onRegistrationSuccess();
+        })
+      })
+      .catch(res => {
+        password.value = '';
+        this.setState({ error: res.error })
+      })
     } else {
       this.setState({ error: passwordError })
     }

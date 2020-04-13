@@ -13,12 +13,14 @@ import generateMatch from '../../helpers/generateMatch';
 import { v4 as uuidv4 } from 'uuid';
 import { sportsData } from "../../store";
 import { matches } from "../../store";
+import TokenService from "../../services/token-service"
 
 class App extends React.Component {
 
   state = {
     user: "Guest", 
     balance: 1000,
+    loggedIn: false,
     betslipDisplay: true, 
     sportListDisplay: false,
     bets: [],
@@ -41,6 +43,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
+    if (TokenService.hasAuthToken()) {
+      const{ user_name, user_balance } = TokenService.readJwtToken()
+      console.log(TokenService.readJwtToken())
+        this.setState({
+          user: user_name, 
+          balance: user_balance, 
+          loggedIn: true
+        })
+      } 
+
     const newMatches = {...this.state.matches};
     for (let i = 1; i <= 50; i++) {
       let newMatch = generateMatch(sportsData);
@@ -140,14 +153,24 @@ class App extends React.Component {
   handleSetUser = (user, balance) => {
     this.setState({
       user: user,
-      balance: balance
+      balance: balance,
+      loggedIn: true
     });
   };
 
   reloadBalance = () => {
-    this.setState ({
+    this.setState({
       balance: 1000,
     }) 
+  };
+
+  handleUserlogout = () => {
+    TokenService.clearAuthToken();
+    this.setState({
+      loggedIn: false,
+      balance: null,
+      user: null
+    })
   }
 
   render() {
@@ -167,7 +190,7 @@ class App extends React.Component {
         <div className='App'>
           <Route
             path='/'
-            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn="true" reloadBalance={this.reloadBalance} />}
+            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn={this.state.loggedIn} handleSetUser={this.handleSetUser} handleUserlogout={this.handleUserlogout}reloadBalance={this.reloadBalance} />}
           />
           <main>          
             <MatchList matches={this.state.matches}/>

@@ -18,7 +18,7 @@ export default class MatchView extends React.Component {
         <div className="market">
           <div className="desc">Win Match</div>
           <div className="outcome">
-            <div clasNames="team">{match.home_team}</div>
+            <div className="team">{match.home_team}</div>
             <div className="odd left_odd" onClick={() => this.context.createBet(match.sport, match.league, match.home_team, match.home_odd, match.matchId, `${match.home_team} v ${match.away_team}`)}>{match.home_odd}</div>
           </div>
           <div className="outcome">
