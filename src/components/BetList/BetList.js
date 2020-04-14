@@ -1,19 +1,25 @@
 import React from 'react';
+import SportsbookContext from "../../SportsbookContext";
 import './BetList.css'
 
-export default function BetList(props) {
-  let bets = [];
+export default class BetList extends React.Component {
+  static contextType = SportsbookContext;
 
-  if (props.bets) {
-    bets = props.bets.map(bet => ( 
+  render() {
+  let bets = this.context.bets;
+  let betList = []
+
+  if (bets.length > 0) {
+    betList = bets.map(bet => ( 
       <tr key={bet.betId} className="bet_line">
-        <td>{bet.matchDesc}</td>
+        <td>{bet.match_desc}</td>
+        <td>{bet.team_name}</td>
         <td>{bet.price.toString()}</td>
-        <td>{`$${bet.stake.toString()}`}</td>
-        <td>{`$${bet.return.toString()}`}</td>
-        <td>{bet.status}</td>
+        <td>{`$${(bet.bet_stake*100/100).toFixed(2)}`}</td>
+        <td>{`$${(bet.bet_stake*bet.price*100/100).toFixed(2)}`}</td>
+        <td>{bet.bet_status}</td>
       </tr>))                             
-  } else bets = "No bets to display";
+  } else betList = "No bets to display";
   
   return(
     <div className="bet_history">
@@ -21,7 +27,8 @@ export default function BetList(props) {
       <table className="history">
         <thead>
           <tr>
-            <th>Details</th>
+            <th>Match</th>
+            <th>Team</th>
             <th>Price</th>
             <th>Stake</th>
             <th>Return</th>
@@ -29,9 +36,10 @@ export default function BetList(props) {
           </tr>
         </thead>
         <tbody>
-          {bets}
+          {betList}
         </tbody>
       </table>
     </div>
   );
+  }
 }

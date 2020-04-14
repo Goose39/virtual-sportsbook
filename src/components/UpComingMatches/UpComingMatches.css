@@ -1,0 +1,10 @@
+.uc_match_list {
+  list-style-type: none;
+  padding: 5px;
+  
+} 
+
+.uc_matches_view {
+  width: 100%;
+  margin: 0 auto;
+}

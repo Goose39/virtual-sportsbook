@@ -1,0 +1,47 @@
+.uc-match {
+  display: flex;
+  justify-content: center;
+}
+
+.uc_sport {
+  text-align: left;
+  width: 100px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.uc_league {
+  display:none;
+  text-align: left;
+}
+.uc_desc {
+  text-align: left;
+  width: 200px;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.uc_start {
+  font-size: 12px;
+  text-align: left;
+  width: 100px;
+}
+
+@media only screen and (min-width: 1050px) {
+  
+  .uc_sport {
+    text-align: left;
+    font-size: 14px;
+    width: 200px;
+  }
+  .uc_league {
+    display: block;
+    width: 150px;
+  }
+
+  .uc_desc {
+    text-align: left;
+    width: 300px;
+    font-size: 16px;
+  }
+}

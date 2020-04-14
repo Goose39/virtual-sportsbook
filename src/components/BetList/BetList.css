@@ -15,17 +15,6 @@
   margin: 0 auto
 }
 
-@media only screen and (min-width: 650px) {
-
-  .betslip  {
-    color: darkslategray;
-    display: inline-block;
-    width: 25%;
-    max-width: 300px
-  }
-
-}
-
 @media only screen and (min-width: 850px) {
 
   .bet_line {

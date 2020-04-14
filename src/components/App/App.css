@@ -22,14 +22,6 @@ main {
 
 }
 
-@media only screen and (min-width: 650px) {
-
-  .console {
-    width: 50%;
-  }
-
-}
-
 @media only screen and (min-width: 850px) {
 
   .console {

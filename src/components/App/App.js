@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { withRouter } from "react-router";
+import { withRouter, Router } from "react-router";
 import "./App.css";
 import SportsbookContext from "../../SportsbookContext";
 import Welcome from '../Welcome/Welcome';
+import UpComingMatches from '../UpComingMatches/UpComingMatches';
 import Navbar from '../Navbar/Navbar';
 import MatchList from '../MatchList/MatchList';
 import Betslip from '../BetSlip/Betslip';
@@ -12,53 +13,84 @@ import BetList from '../BetList/BetList';
 import { v4 as uuidv4 } from 'uuid';
 import TokenService from '../../services/token-service';
 import MatchesApiService from '../../services/matches-api-service';
+import BetsApiService from '../../services/bets-api-service';
+import BalanceApiService from '../../services/balance-api-service';
+import PrivateRoute from '../Utils/PrivateRoute';
 
 class App extends React.Component {
 
   state = {
-    user: "Guest", 
-    balance: 1000,
+    user: null, 
+    balance: null,
     loggedIn: false,
     betslipDisplay: true, 
     sportListDisplay: false,
     bets: [],
     matches: {},
-    betHistory: [
-      {
-        betId: uuidv4(),
-        sport: "Soccer",
-        league: "Premier League", 
-        team: "Chelsea", 
-        price: 1.9, 
-        stake: 1000,
-        return: 1900, 
-        matchId: "c2a78009-f79f-43c3-86f1-3a3ff1f71160",
-        matchDesc: "Chelsea v Leicester City",
-        status: "Open",
-      },
-    ],
-    selectedMatchId: ""
+    betHistory: [],
+    selectedMatchId: "", 
+    upcomingMatches: [],
   }
 
   componentDidMount() {
-
-    if (TokenService.hasAuthToken()) {
-      const{ user_name, user_balance } = TokenService.readJwtToken()
-      console.log(TokenService.readJwtToken())
+    // Get list of upcoming matches
+    MatchesApiService.getMatches()
+    .then(res => { 
       this.setState({
-        user: user_name, 
-        balance: user_balance, 
-        loggedIn: true
+        matches: res
       })
-    } 
+    }); 
+    //Get upcoming matches
+    MatchesApiService.getUpcomingMatches()
+    .then(matches => {
+      this.setState({
+        upcomingMatches: matches
+      })
+    }); 
 
-      MatchesApiService.getMatches()
-      .then(res => this.setState({
-          matches: res
-        }))  
+    // if user has an existing token, refresh login to get new token and balance
+    if (TokenService.hasAuthToken()) {
+      const{ user_name, user_id} = TokenService.readJwtToken()
+
+      return this.refreshBalance(user_id)
+      .then(res => {
+        this.setState({
+          user_name: user_name,
+          loggedIn: true,
+          balance: res
+        })
+        return BetsApiService.getUserBets(user_id)
+        .then(bets => {
+          this.setState({
+            betHistory: bets,
+          })
+        })
+      })
+    };    
+      
   }
 
-  createBet = (sport, league, team, price, matchId, matchDesc) => {
+  refreshBalance = () => {
+    const{ user_id} = TokenService.readJwtToken()
+    return BalanceApiService.getUserBalance(user_id)
+      .then(balance => {
+        this.setState({
+          balance: balance.user_balance
+        })
+      })
+  };
+
+  reloadBalance = () => {
+    const{ user_id} = TokenService.readJwtToken()
+    return BalanceApiService.relaodUserBalance(user_id)
+      .then(balance =>
+        this.setState({
+        balance: balance.user_balance
+      })
+    )};
+
+
+  createBet = (sport, league, team, price, matchId, match_desc, teamId) => {
     const newBets = [...this.state.bets];
     newBets.push({
       betId: uuidv4(),
@@ -68,7 +100,8 @@ class App extends React.Component {
       price: price, 
       stake: 0, 
       matchId: matchId,
-      matchDesc: matchDesc,
+      match_desc: match_desc,
+      teamId: teamId
     })
 
     this.setState({
@@ -113,32 +146,40 @@ class App extends React.Component {
 
     if (betTotal > 0) {
       let bets = [...this.state.bets];
-      let newHistory = [...this.state.betHistory];
       let newBalance = this.state.balance;
+      let promises = [];
+      const{ user_id } = TokenService.readJwtToken()
 
       for (let i=0; i < bets.length; i++) {
+
         if (bets[i].stake > 0) {
           let bet = {
-            betId: bets[i].betId,
-            sport: bets[i].sport,
-            league: bets[i].league, 
-            team: bets[i].team, 
-            price: 1.9, 
-            stake: bets[i].stake,
-            return: bets[i].price*bets[i].stake, 
-            matchId: bets[i].matchId,
-            matchDesc: bets[i].matchDesc,
-            status: "Open",
+            user_id: user_id, 
+            team_id: bets[i].teamId, 
+            price: bets[i].price, 
+            bet_stake: bets[i].stake, 
+            match_id: bets[i].matchId,
+            match_desc: bets[i].match_desc
           }
-          newHistory.push(bet)
+          promises.push(
+            BetsApiService.placeBet(bet)
+            .then(bet => {
+              bets.splice(i, 1)
+            })
+            .catch(error => console.log(error))
+            )
         }
       }
 
-      this.setState({
-        betHistory: newHistory,
-        bets: [], 
-        balance: newBalance - betTotal, 
+      return Promise.all(promises)
+      .then(result  => {
+        this.setState({ 
+          bets: bets, 
+          balance: newBalance - betTotal 
+        })
       })
+
+      
     }
   }
 
@@ -150,18 +191,13 @@ class App extends React.Component {
     });
   };
 
-  reloadBalance = () => {
-    this.setState({
-      balance: 1000,
-    }) 
-  };
-
   handleUserlogout = () => {
     TokenService.clearAuthToken();
     this.setState({
       loggedIn: false,
       balance: null,
-      user: null
+      user: null, 
+      betHistory: []
     })
   }
 
@@ -172,7 +208,9 @@ class App extends React.Component {
       handleBetAmount: this.handleBetAmount,
       bets: this.state.bets,
       matches: this.state.matches,
+      upcomingMatches: this.state.upcomingMatches
     }
+
   return (
     <SportsbookContext.Provider value={contextValue}>
       <>
@@ -182,26 +220,36 @@ class App extends React.Component {
         <div className='App'>
           <Route
             path='/'
-            render={() => <Navbar user={this.state.user} balance={this.state.balance} bets={this.state.bets} loggedIn={this.state.loggedIn} handleSetUser={this.handleSetUser} handleUserlogout={this.handleUserlogout}reloadBalance={this.reloadBalance} />}
+            render={() => <Navbar 
+                            user={this.state.user} 
+                            balance={this.state.balance} 
+                            bets={this.state.bets} 
+                            loggedIn={this.state.loggedIn} 
+                            handleSetUser={this.handleSetUser} 
+                            handleUserlogout={this.handleUserlogout} 
+                            reloadBalance={this.reloadBalance} 
+                            refreshBalance={this.refreshBalance}
+                          />}
           />
           <main>          
             <MatchList matches={this.state.matches}/>
             <div className="console">
               <Switch>
                 <Route
-                  path='/'
+                  path={'/'}
                   exact
                   component={Welcome} 
                   />}
                 />
                 <Route
-                  path='/match/:matchId'
+                  path={'/match/:matchId'}
                   component={MatchView}
                 />
-                <Route
-                  path='/history'
-                  render={() => <BetList bets={this.state.betHistory} />}
+                <PrivateRoute
+                  path={'/history'}
+                  component={BetList}
                 />
+                <Route component={UpComingMatches} />
               </Switch>
             </div>
             <Betslip 

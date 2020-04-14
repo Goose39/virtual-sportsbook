@@ -3,7 +3,6 @@ import Bet from "./Bet/Bet"
 import './Betslip.css'
 
 export default class Betslip extends React.Component {
-
   state = {
     mobile_active: false, 
   }
@@ -32,10 +31,11 @@ export default class Betslip extends React.Component {
           team={bet.team} 
           price={bet.price} 
           stake={bet.stake} 
-          matchDesc={bet.matchDesc}
+          teamId={bet.teamId}
+          match_desc={bet.match_desc}
           handleStake={this.props.handleStake}
           removeBet={this.props.removeBet} />))
-        betTotal += parseInt(bet.stake);
+        betTotal += bet.stake*100/100;
         betReturn += Math.floor(bet.stake*bet.price*100)/100;
       });
     }
@@ -51,13 +51,13 @@ export default class Betslip extends React.Component {
           {bets.length > 0? bets: "Place a bet"}
           {bets.length > 0 && betTotal <= this.props.balance && this.props.loggedIn?  
             <div className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
-              <div className="bet_size">{`Place Bet: $${betTotal.toString()}`}</div>
-              <div className="return">{`Total return: $${betReturn.toString()}`}</div>
+              <div className="bet_size">{`Place Bet: $${betTotal.toFixed(2)}`}</div>
+              <div className="return">{`Total return: $${betReturn.toFixed(2)}`}</div>
             </div>
           : ""}
           {betTotal > this.props.balance && this.props.loggedIn?  
             <div className="confirmation_disabled">
-              <div className="bet_size">{`Total Bet: $${betTotal.toString()}`}</div>
+              <div className="bet_size">{`Total Bet: $${betTotal.toFixed(2)}`}</div>
               <div className="return">Bet is larger than your balance.</div>
             </div>
           : ""}

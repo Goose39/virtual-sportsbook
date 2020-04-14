@@ -1,12 +1,15 @@
 .match_list, .betslip{
   display:none;
   background-color: rgb(231, 229, 229);
+  overflow-y: auto;
 }
 
 .match_list {
+  height: 100%;
   text-align: left;
   padding: 5px;
-  overflow: hidden;
+  overflow-x: hidden;
+  width: 40%;
 }
 
 .mobile_active {
@@ -17,7 +20,7 @@
 .matchlist_burger {
   position: fixed;
   left: 12px;
-  top: 85px
+  top: 70px
 }
 
 

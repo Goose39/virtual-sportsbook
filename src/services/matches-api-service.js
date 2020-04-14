@@ -10,6 +10,18 @@ const MatchesApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
+    .catch(error => console.log(error))
+  },
+  getUpcomingMatches() {
+    return fetch(`${config.API_ENDPOINT}/matches/upcoming`, {
+      method: 'GET'
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+    .catch(error => console.log(error))
   },
 }
 

@@ -16,6 +16,7 @@ const AuthApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+      .catch(error => console.log(error))
   },
   postLogin({ user_name, password }) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
@@ -31,10 +32,12 @@ const AuthApiService = {
           : res.json()
       )
       .then(res => {
-        TokenService.saveAuthToken(res.authToken)
-        IdleService.regiserIdleTimerResets()
+        TokenService.saveAuthToken(res.authToken);
+        IdleService.regiserIdleTimerResets();
         return res
-      })
+      }
+    )
+    .catch(error => console.log(error))
   },
 };
 

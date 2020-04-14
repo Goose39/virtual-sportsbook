@@ -5,6 +5,11 @@ nav {
   background-color: grey;
 }
 
+.menu_item_user {
+  display: flex;
+  flex-direction: column;
+}
+
 .user_info {
   color: white;
   margin: auto; 
@@ -15,10 +20,28 @@ nav {
   font-weight: bold;
 }
 
-
 .menu_item {
-  padding: 10px;
+  padding-top: 10px;
   cursor: pointer;
+}
+
+.menu_item.user_controls {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+.stacked_group {
+  margin: 0px 10px;
+}
+
+.history_link {
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.stacked_group > .login_option{
+  padding: 0px;
 }
 
 @media only screen and (min-width: 550px) {
