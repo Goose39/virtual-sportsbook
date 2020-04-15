@@ -1,11 +1,15 @@
 .login_form {
   padding: 5px;
   position: absolute;
+  top: 110px;
+  left: calc(50% - 75px);;
   border-radius: 6px;
   border: 2px grey solid;
+  color: black;
 }
 
 .login_button {
+
   float: right
 }
 
@@ -15,17 +19,48 @@
   max-width: 280px;
 }
 
-@media only screen and (min-width: 500px) {
+.password, .user_name {
+  width: 250px;
+  text-align: left;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+}​
+
+
+
+#LoginForm__user_name {
+  width: 150px;
+}
+
+@media only screen and (min-width: 550px) {
   .login_form {
     max-width: 400px;
-    padding: 25px;
+    padding: 15px;
   }
 
   .table_login {
     margin-left: 10vw;
   }
+
+  .login_form {
+    top: 135px;
+  }
+  .login_button {
+    margin-top: 20px;
+  }
   
 }
+
+@media only screen and (min-width: 850px) {
+  .login_form {
+    top: 170px;
+  }
+}
+
 
 @media only screen and (min-width: 1000px) {
   .table_login {

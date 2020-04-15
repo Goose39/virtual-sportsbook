@@ -8,8 +8,11 @@ export default function Sport(props) {
   )     
 
   return(
-    <div className="sport">{props.sport}
+    <>
+    <div className="sport_name">{props.sport}</div>
+    <div className="sport">
       {leagues}
     </div>
+    </>
   );
 }

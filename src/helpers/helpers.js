@@ -41,15 +41,28 @@ export const generateOdds = function(home, away) {
 export const findMatch = (matches={}, matchId) => {
   const allMatches = []
 
-  for (const sport in matches) {
-    for (const league in matches[sport].leagues) {
-      matches[sport].leagues[league].forEach(match => allMatches.push(match))
+  console.log("context matches", matches)
+  // check if obj is not empty
+  let i = 0;
+    for(var key in matches){
+        ++i;
     }
-  }
-  
-  for (let i = 0; i < allMatches.length-1; i++) {
-    if (allMatches[i].matchId === matchId) return allMatches[i]
-  }
+    if (i > 0) {
+      if (matches)
+        for (const sport in matches) {
+          for (const league in matches[sport].leagues) {
+            matches[sport].leagues[league].forEach(match => allMatches.push(match))
+          }
+        }
+        
+        for (let i = 0; i < allMatches.length-1; i++) {
+          if (allMatches[i].matchId === matchId) return allMatches[i]
+        }
+    }
 
   return null;
+}
+
+export const checkMatchNotStarted = (match) => {
+
 }

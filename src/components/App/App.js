@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { withRouter, Router } from "react-router";
+import { withRouter } from "react-router";
 import "./App.css";
-import SportsbookContext from "../../SportsbookContext";
+import SportsbookContext from "../../context/SportsbookContext";
 import Welcome from '../Welcome/Welcome';
 import UpComingMatches from '../UpComingMatches/UpComingMatches';
 import Navbar from '../Navbar/Navbar';
@@ -12,7 +12,6 @@ import MatchView from '../MatchView/MatchView';
 import BetList from '../BetList/BetList';
 import { v4 as uuidv4 } from 'uuid';
 import TokenService from '../../services/token-service';
-import MatchesApiService from '../../services/matches-api-service';
 import BetsApiService from '../../services/bets-api-service';
 import BalanceApiService from '../../services/balance-api-service';
 import PrivateRoute from '../Utils/PrivateRoute';
@@ -21,49 +20,27 @@ class App extends React.Component {
 
   state = {
     user: null, 
+    user_id: null,
     balance: null,
+    bets: [],
     loggedIn: false,
     betslipDisplay: true, 
     sportListDisplay: false,
-    bets: [],
-    matches: {},
-    betHistory: [],
     selectedMatchId: "", 
     upcomingMatches: [],
   }
 
-  componentDidMount() {
-    // Get list of upcoming matches
-    MatchesApiService.getMatches()
-    .then(res => { 
-      this.setState({
-        matches: res
-      })
-    }); 
-    //Get upcoming matches
-    MatchesApiService.getUpcomingMatches()
-    .then(matches => {
-      this.setState({
-        upcomingMatches: matches
-      })
-    }); 
-
+  componentDidMount() {   
     // if user has an existing token, refresh login to get new token and balance
     if (TokenService.hasAuthToken()) {
       const{ user_name, user_id} = TokenService.readJwtToken()
 
-      return this.refreshBalance(user_id)
+      return this.refreshBalance()
       .then(res => {
         this.setState({
-          user_name: user_name,
+          user: user_name,
           loggedIn: true,
-          balance: res
-        })
-        return BetsApiService.getUserBets(user_id)
-        .then(bets => {
-          this.setState({
-            betHistory: bets,
-          })
+          user_id: user_id
         })
       })
     };    
@@ -71,7 +48,7 @@ class App extends React.Component {
   }
 
   refreshBalance = () => {
-    const{ user_id} = TokenService.readJwtToken()
+    const{ user_id} = TokenService.readJwtToken();
     return BalanceApiService.getUserBalance(user_id)
       .then(balance => {
         this.setState({
@@ -81,12 +58,16 @@ class App extends React.Component {
   };
 
   reloadBalance = () => {
-    const{ user_id} = TokenService.readJwtToken()
-    return BalanceApiService.relaodUserBalance(user_id)
-      .then(balance =>
-        this.setState({
-        balance: balance.user_balance
-      })
+    const{ user_id } = TokenService.readJwtToken();
+    return BalanceApiService.reloadUserBalance(user_id)
+      .then(balance => {
+        console.log(balance)
+        if (balance > 0) {
+          this.setState({
+            balance: balance
+          })
+        }
+      }
     )};
 
 
@@ -207,8 +188,10 @@ class App extends React.Component {
       removeBet: this.removeBet,
       handleBetAmount: this.handleBetAmount,
       bets: this.state.bets,
-      matches: this.state.matches,
-      upcomingMatches: this.state.upcomingMatches
+      upcomingMatches: this.state.upcomingMatches, 
+      betHistory: this.state.betHistory,
+      user_name: this.state.user,
+      user_id: this.state.user_id,
     }
 
   return (

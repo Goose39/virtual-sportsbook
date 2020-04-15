@@ -1,5 +1,11 @@
 .league {
   list-style: none;
-  overflow: hidden;
+  padding-left: 12px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.league_name {
   padding-left: 12px;
 }
+

@@ -46,7 +46,7 @@ export default class LoginForm extends React.Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <div className='user_name'>
+        <div className='field'>
           <label htmlFor='LoginForm__user_name'>
             User name
           </label>
@@ -56,7 +56,7 @@ export default class LoginForm extends React.Component {
             id='LoginForm__user_name'>
           </input>
         </div>
-        <div className='password'>
+        <div className='field'>
           <label htmlFor='LoginForm__password'>
             Password
           </label>

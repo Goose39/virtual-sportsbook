@@ -3,6 +3,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   background-color: grey;
+  min-height: 45px;
 }
 
 .menu_item_user {
@@ -21,7 +22,6 @@ nav {
 }
 
 .menu_item {
-  padding-top: 10px;
   cursor: pointer;
 }
 
@@ -29,6 +29,7 @@ nav {
   display: flex;
   flex-direction: row;
   color: white;
+  padding-top: 10px;
 }
 
 .stacked_group {

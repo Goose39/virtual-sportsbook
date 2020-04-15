@@ -2,6 +2,9 @@
   white-space: nowrap;
 }
 
+.sport_name {
+  padding-left: 10px;
+}
 @media only screen and (min-width: 850px) {
 
   .sport {

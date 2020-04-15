@@ -3,7 +3,8 @@ import React from 'react';
 export default React.createContext( 
   {
     bets: [],
-    matches: [],
+    matches: {},
+    betHistory: [],
     upcomingMatches: [],
     removeBet: () => {}
   }

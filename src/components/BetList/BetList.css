@@ -15,6 +15,18 @@
   margin: 0 auto
 }
 
+.history {
+  border-collapse: collapse;
+}
+
+.history > .bet_history_list > .bet_line > td{
+  padding: 2px 3px;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(182, 179, 175, 0.26);
+}
+
 @media only screen and (min-width: 850px) {
 
   .bet_line {

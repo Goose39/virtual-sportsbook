@@ -7,7 +7,6 @@
 .match_list {
   height: 100%;
   text-align: left;
-  padding: 5px;
   overflow-x: hidden;
   width: 40%;
 }
@@ -20,7 +19,18 @@
 .matchlist_burger {
   position: fixed;
   left: 12px;
-  top: 70px
+  top: 82px
+}
+
+.upcoming_link {
+  text-align: center;
+  background-color: rgb(66, 64, 64);
+  width: 100%;
+  padding: 5px;
+}
+
+.upcoming_link > a {
+  color: white;
 }
 
 

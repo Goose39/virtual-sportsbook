@@ -76,7 +76,7 @@ export default class RegistrationForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <div className='full_name'>
+        <div className='field'>
           <label htmlFor='RegistrationForm__full_name'>
             Full name
           </label>
@@ -87,7 +87,7 @@ export default class RegistrationForm extends Component {
             id='RegistrationForm__full_name'>
           </input>
         </div>
-        <div className='user_name'>
+        <div className='field'>
           <label htmlFor='RegistrationForm__user_name'>
             User name 
           </label>
@@ -98,7 +98,7 @@ export default class RegistrationForm extends Component {
             id='RegistrationForm__user_name'>
           </input>
         </div>
-        <div className='password'>
+        <div className='feild'>
           <label htmlFor='RegistrationForm__password'>
             Password
           </label>

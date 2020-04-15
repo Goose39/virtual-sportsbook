@@ -13,7 +13,7 @@ export default function Navbar(props) {
           {props.loggedIn? 
           (<>
               <div className="stacked_group">
-                <div className="user_name">{props.user}</div>
+                <div className="user">{props.user}</div>
                 <div className="balance">
                   {props.balance > 0
                   ? <div onClick={() => props.refreshBalance()}>{`$${props.balance} `}<FontAwesomeIcon icon={faSync} size="xs" /></div>
