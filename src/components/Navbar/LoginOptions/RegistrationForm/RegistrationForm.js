@@ -30,10 +30,8 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    // Disable button on 1st click, users may click twice due to slow server response time.
-    document.getElementById("register").disabled = true;
     TokenService.clearAuthToken();
-    const { full_name, nick_name, user_name, password } = ev.target
+    const { full_name, user_name, password } = ev.target
     const newUser = { full_name: full_name.value, user_name: user_name.value, password: password.value }
 
     this.setState({ error: null })
@@ -50,17 +48,12 @@ export default class RegistrationForm extends Component {
         })
         .then(result => {
           const { user_name, user_balance } = TokenService.readJwtToken()
-          this.props.handleSetUser(user_name, user_balance);
-          full_name.value = '';
-          nick_name.value = '';
-          user_name.value = '';
-          password.value = '';
-          this.props.onRegistrationSuccess();
+          this.props.onRegistrationSuccess(user_name, user_balance);
         })
       })
-      .catch(res => {
+      .catch(err => {
         password.value = '';
-        this.setState({ error: res.error })
+        this.setState({ error: err.error })
       })
     } else {
       this.setState({ error: passwordError })

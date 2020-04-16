@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { withRouter } from "react-router";
+import { Route, Switch } from 'react-router-dom';
 import "./App.css";
 import SportsbookContext from "../../context/SportsbookContext";
 import Welcome from '../Welcome/Welcome';
@@ -12,6 +12,7 @@ import MatchView from '../MatchView/MatchView';
 import BetList from '../BetList/BetList';
 import { v4 as uuidv4 } from 'uuid';
 import TokenService from '../../services/token-service';
+import IdleService from '../../services/idle-service';
 import BetsApiService from '../../services/bets-api-service';
 import BalanceApiService from '../../services/balance-api-service';
 import PrivateRoute from '../Utils/PrivateRoute';
@@ -94,7 +95,7 @@ class App extends React.Component {
     let newBets = [...this.state.bets];
 
     for (let i = 0; i < newBets.length; i++) {
-      if ( newBets[i].betId == betId ) {
+      if ( newBets[i].betId === betId ) {
           if (!isNaN(stake)) {
             newBets[i].stake = stake;
           } else {
@@ -112,7 +113,7 @@ class App extends React.Component {
     const newBets = [...this.state.bets];
     
     for (let i = 0; i < newBets.length; i++) {
-      if ( newBets[i].betId == betId)
+      if ( newBets[i].betId === betId)
         {
          newBets.splice(i, 1)
         }
@@ -173,7 +174,11 @@ class App extends React.Component {
   };
 
   handleUserlogout = () => {
+    /* when logging out, clear token and callbacks to the refresh api and idle auto logout */
     TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.props.history.push('/upcoming');
     this.setState({
       loggedIn: false,
       balance: null,
@@ -196,7 +201,6 @@ class App extends React.Component {
 
   return (
     <SportsbookContext.Provider value={contextValue}>
-      <>
         <header role="banner">
           <h1 className="app_name">Virtual Sportsbook</h1>
         </header>
@@ -232,7 +236,7 @@ class App extends React.Component {
                   path={'/history'}
                   component={BetList}
                 />
-                <Route component={UpComingMatches} />
+                <Route render={({history}) => <UpComingMatches />} />
               </Switch>
             </div>
             <Betslip 
@@ -245,10 +249,9 @@ class App extends React.Component {
             />
           </main>
         </div>
-      </>
     </SportsbookContext.Provider>
     );
   }
-}
+} 
 
 export default withRouter(App);

@@ -6,7 +6,6 @@ import AuthApiService from '../../../../services/auth-api-service';
 export default class LoginForm extends React.Component {
   static defaultProps = {
     onLoginSuccess: () => {}, 
-    handleSetUser: () => {}
   };
 
   state = { error: null };
@@ -17,22 +16,17 @@ export default class LoginForm extends React.Component {
     this.setState({ error: null })
 
     const { user_name, password } = ev.target
-
     AuthApiService.postLogin({
       user_name: user_name.value,
       password: password.value,
     })
     .then(res => {
       const { user_name } = TokenService.readJwtToken();
-      this.props.handleSetUser(user_name, res.user_balance);
-      user_name.value = ''
-      password.value = ''
+      this.props.onLoginSuccess(user_name, res.user_balance)
     })
-    .then(res => {
-      this.props.onLoginSuccess()
-    })
-    .catch(res => {
-      this.setState({ error: res.error })
+    .catch(err => {
+      password.value = '';
+      this.setState({ error: err.error })
     })
   };
 

@@ -15,7 +15,7 @@ const BetsApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    .catch(error => console.log(error))
+    .catch(error => error)
   },
   placeBet(bet) {
     return fetch(`${config.API_ENDPOINT}/bets`, {
@@ -31,7 +31,7 @@ const BetsApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    .catch(error => console.log(error))
+    .catch(error => error)
   }
 }
 

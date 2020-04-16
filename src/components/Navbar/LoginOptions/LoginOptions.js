@@ -30,8 +30,8 @@ export default class LoginOptions extends Component {
           <div className="login_option" type='button' onClick={() => this.setFrom("Register")}>Register</div>
         </div>
         <div className='form_container'>
-          {this.state.formOption === 'Login'? <LoginForm onLoginSuccess={this.props.goToTable} handleSetUser={this.props.handleSetUser}/>: null}
-          {this.state.formOption === 'Register'? <RegistrationFrom onRegistrationSuccess={this.props.goToTable} handleSetUser={this.props.handleSetUser}/>: null}
+          {this.state.formOption === 'Login'? <LoginForm onLoginSuccess={this.props.handleSetUser}/>: null}
+          {this.state.formOption === 'Register'? <RegistrationFrom onRegistrationSuccess={this.props.handleSetUser}/>: null}
         </div>
       </>
     );

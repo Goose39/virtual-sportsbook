@@ -30,7 +30,7 @@ export default class MatchList extends React.Component {
   }
 
   isEmpty = (obj) => {
-    return Object.keys(obj).length === 0;
+    return JSON.stringify(obj) === '{}';
   }
 
   render () {

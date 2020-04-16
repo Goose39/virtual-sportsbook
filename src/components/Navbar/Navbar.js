@@ -17,7 +17,7 @@ export default function Navbar(props) {
                 <div className="balance">
                   {props.balance > 0
                   ? <div onClick={() => props.refreshBalance()}>{`$${props.balance} `}<FontAwesomeIcon icon={faSync} size="xs" /></div>
-                  : <a onClick={() => props.reloadBalance()}>Reload Balance</a>}</div>
+                  : <div onClick={() => props.reloadBalance()}>Reload Balance</div>}</div>
               </div>
               <div className="stacked_group">
                 <Link className="history_link" to="/history">Bet History</Link>

@@ -21,7 +21,7 @@ const MatchesApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    .catch(error => console.log(error))
+    .catch(error => error)
   },
   getMatchById(match_id) {
     return fetch(`${config.API_ENDPOINT}/matches/match/${match_id}`, {
@@ -32,7 +32,7 @@ const MatchesApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    .catch(error => console.log(error))
+    .catch(error => error)
   },
 }
 
