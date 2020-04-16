@@ -29,31 +29,27 @@ class App extends React.Component {
     sportListDisplay: false,
     selectedMatchId: "", 
     upcomingMatches: [],
+    error: null
   }
 
   componentDidMount() {   
     // if user has an existing token, refresh login to get new token and balance
     if (TokenService.hasAuthToken()) {
-      const{ user_name, user_id} = TokenService.readJwtToken()
-
       return this.refreshBalance()
-      .then(res => {
-        this.setState({
-          user: user_name,
-          loggedIn: true,
-          user_id: user_id
-        })
-      })
-    };    
-      
-  }
+      .then(res => res)
+      .catch(error => this.setState({error}))
+    }
+  }     
 
   refreshBalance = () => {
-    const{ user_id} = TokenService.readJwtToken();
+    const{ user_name, user_id } = TokenService.readJwtToken();
     return BalanceApiService.getUserBalance(user_id)
       .then(balance => {
         this.setState({
-          balance: balance.user_balance
+          balance: balance.user_balance,
+          user: user_name,
+          loggedIn: true,
+          user_id: user_id,
         })
       })
   };
@@ -221,6 +217,7 @@ class App extends React.Component {
           <main>          
             <MatchList matches={this.state.matches}/>
             <div className="console">
+              {this.state.error? <div className="console_error">{this.state.error}</div>:null}
               <Switch>
                 <Route
                   path={'/'}
@@ -236,7 +233,7 @@ class App extends React.Component {
                   path={'/history'}
                   component={BetList}
                 />
-                <Route render={({history}) => <UpComingMatches />} />
+                <Route component={UpComingMatches}/>
               </Switch>
             </div>
             <Betslip 

@@ -43,7 +43,6 @@
 
 .market {
   padding: 10px;
-  margin-top: 20px;
   width: 100%;
   background-color: rgb(66, 64, 64);
   color: white;
@@ -69,6 +68,11 @@
 .odd:hover {
   background-color: rgb(35, 111, 161);
   color: white;
+}
+
+.odd.disabled:hover {
+  background-color: rgb(172, 172, 172);
+  color: #545151;
 }
 
 

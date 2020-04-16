@@ -1,35 +1,24 @@
 import React from 'react';
-import SportsbookContext from "../../context/SportsbookContext";
+import TokenService from '../../services/token-service';
 import BetsApiService from '../../services/bets-api-service';
 import './BetList.css';
 
 export default class BetList extends React.Component {
-  static contextType = SportsbookContext;
-
   state = {
     error: null,
     bets: [], 
   }
 
   componentDidMount() {
-    if (this.context.user_id) {
-    return BetsApiService.getUserBets(this.context.user_id)
+    if (TokenService.hasAuthToken()) {
+    const{ user_id } = TokenService.readJwtToken();
+    return BetsApiService.getUserBets(user_id)
         .then(bets => {
           this.setState({ bets })
         })
         .catch(error => this.setState({error}))
       } else this.setState({error: "Invalid User"})
   }
-
-  componentWillReceiveProps(nextProps){
-    if (this.context.user_id) {
-      return BetsApiService.getUserBets(this.context.user_id)
-          .then(bets => {
-            this.setState({ bets })
-          })
-          .catch(error => this.setState({error}))
-        } else this.setState({error: "Invalid User"})
-    }
     
   render() {
   let bets = this.state.bets;
@@ -59,7 +48,7 @@ export default class BetList extends React.Component {
                 <td key={`r-${bet.bet_id}`}>{`$${(bet.bet_stake*bet.price*100/100).toFixed(2)}`}</td>
                 <td key={`s-${bet.bet_id}`}>{bet.bet_status}</td>
               </tr>})
-          : <tr>No bets to display</tr>}
+          : <tr><td colSpan="6">No bets to display</td></tr>}
         </tbody>
       </table>
     </div>

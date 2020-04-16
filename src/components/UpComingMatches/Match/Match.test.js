@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Navbar from './Navbar';
+import Match from './Match';
+import { BrowserRouter } from 'react-router-dom';
 
-it('Navbar renders without errors', () => {
+it('Match renders without errors', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Navbar />, div);
+  ReactDOM.render(<BrowserRouter><Match /></BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

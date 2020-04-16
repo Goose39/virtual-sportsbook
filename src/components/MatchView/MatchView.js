@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import { useHistory, withRouter} from 'react-router-dom'
 import Moment from 'moment';
+import { useParams } from 'react-router';
 import { checkMatchNotStarted } from '../../helpers/helpers';
 import SportsbookContext from '../../context/SportsbookContext';
 import MatchesApiService from '../../services/matches-api-service';
@@ -13,53 +15,27 @@ import Soccer from '../../assets/images/soccer.JPG';
 import Tennis from '../../assets/images/tennis.JPG';
 import './MatchView.css';
 
-export default class MatchView extends React.Component {
-  static contextType = SportsbookContext;
+const MatchView = () => {
+  const context = useContext(SportsbookContext);
+  const history = useHistory();
+  let { matchId } = useParams();
 
-  state = {
-    error: null,
-    match: {}, 
-    sport_name: null,
-  }
+  const [error, setError] = useState(null);
+  const [match, setMatch] = useState({});
+  const [sport_name, setSportName]  = useState(null);
   
-  componentDidMount() {
-    let user_id = this.props.match.params.matchId
-    if (user_id) {
-    MatchesApiService.getMatchById(user_id)
+  useEffect(() => {
+    MatchesApiService.getMatchById(matchId)
     .then(res => {
-      this.setState({
-        match: res, 
-        sport_name: res.sport_name
+      setMatch(res)
+      setSportName(res.sport_name)
       })
-    })
     .catch(error => {
-      this.setState({error})
-      this.props.history.push('/upcoming')
+      setError({error})
+      history.push('/upcoming')
       })
-    }
-  }
-
-  componentWillReceiveProps(nextProps){
-    let user_id = nextProps.match.params.matchId
-    if (user_id) {
-    MatchesApiService.getMatchById(user_id)
-    .then(res => {
-      this.setState({
-        match: res,
-        sport_name: res.sport_name
-      })
-    })
-    .catch(error => {
-      this.setState({error})
-      this.props.history.push('/upcoming')
-      })
-    }
- }
- isEmpty = (obj) => {
-  return JSON.stringify(obj) === '{}';
-}
-
-  render() {
+  }, [matchId]);
+ 
     const imageStore = [
       { id: "Soccer", src: Soccer},
       { id: "Tennis", src: Tennis},
@@ -72,44 +48,61 @@ export default class MatchView extends React.Component {
       { id: "Rugby League", src: Rugby},
       { id: "Boxing/MMA", src: Rugby},
     ];
-  
-  let match = this.state.match;
-    // // Check if match has already started
-    // if (match !== null) {
-    //   if () {
-    //     this.setState({
-    //       error: "Match already started. Cannot bet on matches that have already started"
-    //     })
-    //   }
-    // }
-    
     return (
       <>
-      {this.state.error === null && match && this.state.sport_name && checkMatchNotStarted(match)?
+      {error === null && match && sport_name?
       <div className="match_view">
         <div 
           className="match_view_header" 
-          style={{ backgroundImage: `url(${imageStore[imageStore.findIndex(x => x.id === this.state.sport_name)].src})` }}>
+          style={{ backgroundImage: `url(${imageStore[imageStore.findIndex(x => x.id === sport_name)].src})` }}>
           <div className="match_view_header_overlay">
             <div className="match_header">{match.sport_name} - {match.league_name}</div>
             <div className="opponents">{`${match.home_team_name} v ${match.away_team_name}`}</div>
             <div className="start_time">Starts: {Moment(match.match_start).format('lll')}</div> 
           </div>
         </div>
+        {!checkMatchNotStarted(match)? <div className="match_start_error"><p>MATCH HAS ALREADY STARTED. YOU WILL NOT BE ABLE TO PLACE BETS ON IT</p></div>:null}
         <div className="market">To win match</div> 
         <div className="outcomes">         
           <div className="outcome">
             <div className="team">{match.home_team_name}</div>
-            <div className="odd" onClick={() => this.context.createBet(match.sport_name, match.league_name, match.home_team_name, match.home_team_price, match.match_id, `${match.home_team_name} v ${match.away_team_name}`, match.home_team_id)}>{match.home_team_price}</div>
+            <div 
+              className={!checkMatchNotStarted(match)?"odd disabled": "odd"} 
+              onClick={checkMatchNotStarted(match)
+                ? () => context.createBet(
+                  match.sport_name, 
+                  match.league_name, 
+                  match.home_team_name, 
+                  match.home_team_price, 
+                  match.match_id, 
+                  `${match.home_team_name} v ${match.away_team_name}`, 
+                  match.home_team_id )
+                : null
+                }> {match.home_team_price}
+            </div>
           </div>
           <div className="outcome">
             <div className="team">{match.away_team_name}</div>
-            <div className="odd" onClick={() => this.context.createBet(match.sport_name, match.league_name, match.away_team_name, match.away_team_price, match.match_id, `${match.home_team_name} v ${match.away_team_name}`, match.away_team_id)}>{match.away_team_price}</div>
+            <div 
+              className={!checkMatchNotStarted(match)?"odd disabled": "odd"}
+              onClick={checkMatchNotStarted(match)
+                ? () => context.createBet(
+                  match.sport_name, 
+                  match.league_name, 
+                  match.away_team_name, 
+                  match.away_team_price, 
+                  match.match_id, 
+                  `${match.home_team_name} v ${match.away_team_name}`, 
+                  match.away_team_id )
+                 : null 
+                }> {match.away_team_price}
+            </div>
           </div>
         </div>        
       </div>     
-      :<div className="match_view"><p>{this.state.error}</p></div>}
+      :<div className="match_view"><p>{error}</p></div>}
       </>
     )
   }
-}
+
+  export default withRouter(MatchView);
