@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react';
-import { useHistory, withRouter} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import Moment from 'moment';
 import { useParams } from 'react-router';
 import { checkMatchNotStarted } from '../../helpers/helpers';
@@ -15,26 +15,26 @@ import Soccer from '../../assets/images/soccer.JPG';
 import Tennis from '../../assets/images/tennis.JPG';
 import './MatchView.css';
 
-const MatchView = () => {
+export default function MatchView() {
   const context = useContext(SportsbookContext);
   const history = useHistory();
   let { matchId } = useParams();
-
   const [error, setError] = useState(null);
   const [match, setMatch] = useState({});
   const [sport_name, setSportName]  = useState(null);
   
-  useEffect(() => {
-    MatchesApiService.getMatchById(matchId)
-    .then(res => {
-      setMatch(res)
-      setSportName(res.sport_name)
-      })
-    .catch(error => {
-      setError({error})
-      history.push('/upcoming')
-      })
-  }, [matchId]);
+  useEffect(
+    () => {
+      MatchesApiService.getMatchById(matchId)
+      .then(res => {
+        setMatch(res)
+        setSportName(res.sport_name)
+        })
+      .catch(error => {
+        setError({error})
+        history.push('/upcoming')
+        })
+    },[matchId]);
  
     const imageStore = [
       { id: "Soccer", src: Soccer},
@@ -104,5 +104,3 @@ const MatchView = () => {
       </>
     )
   }
-
-  export default withRouter(MatchView);

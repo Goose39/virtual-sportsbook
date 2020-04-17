@@ -126,10 +126,11 @@ class App extends React.Component {
       let bets = [...this.state.bets];
       let newBalance = this.state.balance;
       let promises = [];
-      const{ user_id } = TokenService.readJwtToken()
+      let confirmedBetIds = [];
+      const{ user_id } = TokenService.readJwtToken();
 
       for (let i=0; i < bets.length; i++) {
-
+        console.log(bets[i].betId)
         if (bets[i].stake > 0) {
           let bet = {
             user_id: user_id, 
@@ -141,8 +142,10 @@ class App extends React.Component {
           }
           promises.push(
             BetsApiService.placeBet(bet)
-            .then(bet => {
-              bets.splice(i, 1)
+            .then(res => {
+              console.log(res)
+              console.log(bets[i].betId)
+             confirmedBetIds.push(bets[i].betId)
             })
             .catch(error => console.log(error))
             )
@@ -151,13 +154,17 @@ class App extends React.Component {
 
       return Promise.all(promises)
       .then(result  => {
+        for (let i = 0; i < bets.length; i++) {
+          if (confirmedBetIds.includes(bets[i].betId)) {
+            bets.splice(i, 1)
+          } 
+        }
         this.setState({ 
           bets: bets, 
           balance: newBalance - betTotal 
         })
       })
-
-      
+ 
     }
   }
 
