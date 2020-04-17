@@ -49,11 +49,11 @@ export default class MatchList extends React.Component {
     return(
       <>
         <div className="matchlist_burger menu_item" onClick={() => this.toggleMobileMenu()}>Sports</div>
-        <section className={`match_list ${this.state.mobile_active? "mobile_active": ""}`}>
+        <section className={`match_list_sidebar ${this.state.mobile_active? "mobile_active": ""}`}>
         {!this.state.error
           ? <>
               <div className="upcoming_link"><Link to={`/upcoming`}>Starting Soon</Link></div>
-              {sports}
+              <div className="match_list">{sports}</div>
             </>
           : <p>{this.state.error}</p>
         }

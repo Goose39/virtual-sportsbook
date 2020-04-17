@@ -16,6 +16,7 @@
   padding: 8px 12px;
   color: white;
   font-weight: bold;
+  text-transform: uppercase;
   cursor: pointer;
 }
 

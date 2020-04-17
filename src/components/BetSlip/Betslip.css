@@ -1,6 +1,8 @@
 .betslip {
   color: darkslategray;
   min-width: 250px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .betslip > header {
@@ -11,13 +13,13 @@
 
 .betslip_count {
   position: relative;
-  top: 7px;
-  line-height: 16px;
+  top: 5px;
+  line-height: 1.3;
   display: inline-block;
   margin-left: 2px;
-  width: 17px;
-  height: 17px;
-  background-color: black;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(66, 64, 64);
   color: white;
   border-radius: 50%;
 }
@@ -25,6 +27,8 @@
 .confirmation {
   background-color: rgb(66, 64, 64);
   color: white;
+  width: 100%;
+  border: none;
   cursor: pointer;
 }
 
@@ -43,19 +47,15 @@
 
 .betslip_burger {
   display: flex;
-  background-color: grey;
+  background-color: rgb(35, 111, 161);
   position: fixed;
   right: 0px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
-  top: 75px
-}
-
-.betslip_burger {
+  top: 66px;
   height: 30px;
   line-height: 30px;
-  padding: 0 15px 0 10px
-
+  padding: 0 12px 0 10px
 }
 
 .betslip.mobile_active {
@@ -72,12 +72,12 @@
   }
 
   .betslip_burger {
-    top: 100px;
+    top: 86px;
   }
  
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 850px) {
 
   .betslip_burger {
     display: none;

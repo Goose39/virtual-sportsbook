@@ -76,7 +76,7 @@ class App extends React.Component {
       league: league, 
       team: team, 
       price: price, 
-      stake: 0, 
+      stake: '', 
       matchId: matchId,
       match_desc: match_desc,
       teamId: teamId
@@ -92,10 +92,10 @@ class App extends React.Component {
 
     for (let i = 0; i < newBets.length; i++) {
       if ( newBets[i].betId === betId ) {
-          if (!isNaN(stake)) {
-            newBets[i].stake = stake;
+          if (!isNaN(stake) && stake > 0 && stake !== '' ) {
+            newBets[i].stake = parseFloat(stake);
           } else {
-            newBets[i].stake = 0;
+            newBets[i].stake = '';
           } 
         }
       }
@@ -205,7 +205,12 @@ class App extends React.Component {
   return (
     <SportsbookContext.Provider value={contextValue}>
         <header role="banner">
-          <h1 className="app_name">Virtual Sportsbook</h1>
+          <div className="logo_box">
+            <div className="header_letter_box">V</div>
+            <div className="header_word_box irtual">irtual</div>
+            <div className="header_letter_box">S</div>
+            <div className="header_word_box ports">ports</div>
+          </div>
         </header>
         <div className='App'>
           <Route

@@ -2,7 +2,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: grey;
+  background-color: rgb(35, 111, 161);
   min-height: 45px;
 }
 
@@ -22,27 +22,43 @@ nav {
 }
 
 .menu_item {
-  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
 }
 
 .menu_item.user_controls {
   display: flex;
   flex-direction: row;
   color: white;
-  padding-top: 10px;
 }
 
 .stacked_group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 0px 10px;
 }
 
-.history_link {
-  margin-top: 10px;
+.history_link, .logout_button {
+  font-size: 12px;
   text-decoration: none;
+  background-color: rgb(66, 64, 64);
+  color: white;
+  text-transform: uppercase;
+  padding: 2px;
+  border: none;
+  cursor: pointer;
 }
 
 .stacked_group > .login_option{
   padding: 0px;
+}
+
+.refresh_button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 550px) {

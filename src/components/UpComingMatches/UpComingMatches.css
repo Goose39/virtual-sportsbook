@@ -8,3 +8,8 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.uc_matches_view > header {
+  background-color: rgb(66, 64, 64);
+  color: white;
+}

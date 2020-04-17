@@ -7,6 +7,30 @@ main {
   margin: 0 auto;
   justify-content: space-between;
   width: 100%;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.logo_box {
+  display: flex;
+  max-height: 40px;
+  color: rgb(35, 111, 161);
+  font-weight: bold;
+}
+
+.header_letter_box {
+  font-size: 30px;
+  line-height: normal;
+}
+
+.header_word_box {
+  font-size: 20px;
+  text-transform: uppercase;
+  min-height: 40px;
+}
+
+.header_word_box.ports {
+  line-height: 2;
 }
 
 @media only screen and (min-width: 550px) {
@@ -20,7 +44,28 @@ main {
     width: 75%;
   }
 
-}
+  .logo_box {
+    max-height: 60px;
+  }
+
+  .header_letter_box {
+    font-size: 50px;
+    line-height: normal;
+  }
+
+  .header_word_box {
+    font-size: 30px;
+    min-height: 60px;
+  }
+
+  .header_word_box.ports {
+    line-height: 2.4;
+  }
+
+} 
+
+
+
 
 @media only screen and (min-width: 850px) {
 

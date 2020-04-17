@@ -50,10 +50,10 @@ export default class Betslip extends React.Component {
           <header>Betslip</header>
           {bets.length > 0? bets: "Place a bet"}
           {bets.length > 0 && betTotal <= this.props.balance && this.props.loggedIn?  
-            <div className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
+            <button className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
               <div className="bet_size">{`Place Bet: $${betTotal.toFixed(2)}`}</div>
               <div className="return">{`Total return: $${betReturn.toFixed(2)}`}</div>
-            </div>
+            </button>
           : ""}
           {betTotal > this.props.balance && this.props.loggedIn?  
             <div className="confirmation_disabled">

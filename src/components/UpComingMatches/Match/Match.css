@@ -1,47 +1,64 @@
+.uc_sport, .uc-match, .uc_start, .uc_desc > a {
+  color: white;
+}
+
 .uc-match {
   display: flex;
   justify-content: center;
+  padding-top: 8px;
+}
+
+.uc_match_left, .uc_start {
+  background-color: rgb(66, 64, 64);
+  padding: 4px 0 4px 15px;
+}
+
+.uc_match_left {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .uc_sport {
   text-align: left;
-  width: 100px;
+  min-width: 110px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: bold;  
 }
+
 .uc_league {
-  display:none;
   text-align: left;
+  font-size: 10px;
 }
 .uc_desc {
+  padding-left: 5px;
+  line-height: 2.5;
   text-align: left;
-  width: 200px;
+  width: 100%;
+  min-width: 200px;
   font-size: 12px;
   overflow: hidden;
   white-space: nowrap;
-  margin-right: 10px;
+  background-color: rgb(35, 111, 161);
 }
 .uc_start {
   font-size: 12px;
   text-align: left;
   width: 100px;
+  padding-left: 10px;
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1150px) {
   
   .uc_sport {
     text-align: left;
     font-size: 14px;
-    width: 200px;
-  }
-  .uc_league {
-    display: block;
     width: 150px;
   }
 
   .uc_desc {
     text-align: left;
-    width: 300px;
+    width: 350px;
     font-size: 16px;
   }
+
 }

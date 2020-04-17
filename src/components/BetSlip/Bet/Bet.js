@@ -6,7 +6,7 @@ export default function Bet(props) {
     <>
    
       <div className="bet">
-        <div className="remove_bet" onClick={() => props.removeBet(props.betId)}>X</div>
+        <button className="remove_bet" onClick={() => props.removeBet(props.betId)}>X</button>
         <div className="bet_desc">
           <div className="bet_team">{props.team}</div>
           <div className="bet_market">To win match</div>

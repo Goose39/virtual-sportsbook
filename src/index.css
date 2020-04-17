@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+border: 2px greenyellow solid;
+}
+
 h1 {
   font-size: 20px;
 }
@@ -13,14 +17,18 @@ body {
   color: #444;
   text-align: center;
   line-height: 1.2;
-  max-width: 1500px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
 header {
-  background-color: #bbb;
-  padding: 6px;
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  text-transform: uppercase;
 }
+
 
 @media only screen and (min-width: 550px) {
 
@@ -31,11 +39,6 @@ header {
   body {
     font-size: 16px;
     line-height: 1.5;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-around;
   }
 
   p {
@@ -61,10 +64,6 @@ footer {
   body {
     font-size: 18px;
     line-height: 1.5;
-  }
-
-  header {
-    padding: 25px 15px;
   }
 
 }

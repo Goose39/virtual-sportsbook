@@ -1,8 +1,13 @@
 .match {
   font-size: 14px;
+  padding-top: 2px;
 }
 
 .match > a {
   color: #545151;
   text-decoration: none;
+}
+
+.match > a:hover {
+  color: #236FA1;
 }

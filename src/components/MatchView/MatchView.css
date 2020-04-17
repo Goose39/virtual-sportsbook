@@ -1,6 +1,7 @@
 .match_view {
   margin: 0 auto;
   width: 100%;
+  max-width: 700px;
 }
 
 .match_header {
@@ -46,6 +47,7 @@
   width: 100%;
   background-color: rgb(66, 64, 64);
   color: white;
+  text-transform: uppercase;
 }
 
 .outcome {
@@ -53,6 +55,7 @@
 }
 
 .outcomes {
+  padding-top: 18px;
   display: flex;
   flex-direction: row;
 }
@@ -63,6 +66,8 @@
   height: 40px;
   line-height: 40px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .odd:hover {

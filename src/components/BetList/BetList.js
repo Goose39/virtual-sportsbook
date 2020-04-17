@@ -29,9 +29,9 @@ export default class BetList extends React.Component {
       <table className="history">
         <thead>
           <tr>
-            <th key='hm'>{`Match`}</th>
             <th key='ht'>{`Team`}</th>
             <th key='hp'>{`Price`}</th>
+            <th key='hm'>{`Match`}</th>
             <th key='ha'>{`Stake`}</th>
             <th key='hr'>{`Return`}</th>
             <th key='hs'>{`Status`}</th>
@@ -41,13 +41,13 @@ export default class BetList extends React.Component {
           {bets.length > 0? 
             bets.map(bet => { 
               return <tr key={`bt-${bet.bet_id}`} className="bet_line">
-                <td key={`md-${bet.bet_id}`}>{bet.match_desc}</td>
-                <td key={`tn-${bet.bet_id}`}>{bet.team_name}</td>
-                <td key={`p-${bet.bet_id}`}>{bet.price.toString()}</td>
-                <td key={`a-${bet.bet_id}`}>{`$${(bet.bet_stake*100/100).toFixed(2)}`}</td>
-                <td key={`r-${bet.bet_id}`}>{`$${(bet.bet_stake*bet.price*100/100).toFixed(2)}`}</td>
-                <td key={`s-${bet.bet_id}`}>{bet.bet_status}</td>
-              </tr>})
+                        <td key={`tn-${bet.bet_id}`} className="bl_team">{bet.team_name}</td>
+                        <td key={`p-${bet.bet_id}`} className="bl_price">{bet.price.toString()}</td>
+                        <td key={`md-${bet.bet_id}`} className="bl_desc">{bet.match_desc}</td>
+                        <td key={`a-${bet.bet_id}`} className="bl_stake">{`$${(bet.bet_stake*100/100).toFixed(2)}`}</td>
+                        <td key={`r-${bet.bet_id}`} className="bl_return">{`$${(bet.bet_stake*bet.price*100/100).toFixed(2)}`}</td>
+                        <td key={`s-${bet.bet_id}`} className="bl_status">{bet.bet_status}</td>
+                      </tr>})
           : <tr><td colSpan="6">No bets to display</td></tr>}
         </tbody>
       </table>

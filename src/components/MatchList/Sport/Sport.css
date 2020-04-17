@@ -1,9 +1,17 @@
 .sport {
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+}
+
+.sport_name, .league_name {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .sport_name {
   padding-left: 10px;
+  color: rgb(35, 111, 161);
 }
 @media only screen and (min-width: 850px) {
 

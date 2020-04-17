@@ -48,6 +48,10 @@ export default function MatchView() {
       { id: "Rugby League", src: Rugby},
       { id: "Boxing/MMA", src: Rugby},
     ];
+    let buttonDisabled = "disabled" 
+    if (checkMatchNotStarted(match)) {
+      buttonDisabled = ""
+    }
     return (
       <>
       {error === null && match && sport_name?
@@ -61,13 +65,14 @@ export default function MatchView() {
             <div className="start_time">Starts: {Moment(match.match_start).format('lll')}</div> 
           </div>
         </div>
-        {!checkMatchNotStarted(match)? <div className="match_start_error"><p>MATCH HAS ALREADY STARTED. YOU WILL NOT BE ABLE TO PLACE BETS ON IT</p></div>:null}
+        {!checkMatchNotStarted(match)? <div className="match_start_error"><p>MATCH HAS ALREADY STARTED.</p><p>YOU WILL NOT BE ABLE TO PLACE BETS ON IT</p></div>:null}
         <div className="market">To win match</div> 
         <div className="outcomes">         
           <div className="outcome">
             <div className="team">{match.home_team_name}</div>
-            <div 
-              className={!checkMatchNotStarted(match)?"odd disabled": "odd"} 
+            <button 
+              className="odd"
+              disabled={buttonDisabled}
               onClick={checkMatchNotStarted(match)
                 ? () => context.createBet(
                   match.sport_name, 
@@ -79,12 +84,13 @@ export default function MatchView() {
                   match.home_team_id )
                 : null
                 }> {match.home_team_price}
-            </div>
+            </button>
           </div>
           <div className="outcome">
             <div className="team">{match.away_team_name}</div>
-            <div 
-              className={!checkMatchNotStarted(match)?"odd disabled": "odd"}
+            <button 
+              className="odd" 
+              disabled={buttonDisabled}
               onClick={checkMatchNotStarted(match)
                 ? () => context.createBet(
                   match.sport_name, 
@@ -96,7 +102,7 @@ export default function MatchView() {
                   match.away_team_id )
                  : null 
                 }> {match.away_team_price}
-            </div>
+            </button>
           </div>
         </div>        
       </div>     

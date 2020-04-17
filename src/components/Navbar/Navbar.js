@@ -16,12 +16,13 @@ export default function Navbar(props) {
                 <div className="user">{props.user}</div>
                 <div className="balance">
                   {props.balance > 0
-                  ? <div onClick={() => props.refreshBalance()}>{`$${props.balance} `}<FontAwesomeIcon icon={faSync} size="xs" /></div>
-                  : <div onClick={() => props.reloadBalance()}>Reload Balance</div>}</div>
+                  ? <div>{`$${props.balance}`}<button className="refresh_button" onClick={() => props.refreshBalance()}><FontAwesomeIcon icon={faSync} size="xs" /></button></div>
+                  : <button onClick={() => props.reloadBalance()}>Reload Balance</button>}
+                </div>
               </div>
               <div className="stacked_group">
                 <Link className="history_link" to="/history">Bet History</Link>
-                <div className="login_option" type="button" onClick={() => props.handleUserlogout()}>Logout</div>
+                <button className="logout_button" onClick={() => props.handleUserlogout()}>Logout</button>
               </div>
           </>)
           : <LoginOptions handleSetUser={props.handleSetUser} />}
