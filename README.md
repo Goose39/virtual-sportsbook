@@ -6,8 +6,6 @@ Have a bet on your favourite sports. Click to go to the [Live App](https://virtu
 See Documentation in API repo [here](https://github.com/Goose39/virtual-sportsbook-api)
 
 ## APP Screenshots
-- ### Welcome Screen
-![Welcome Screen](src/assets/images/screenshots/welcome.JPG "Welcome Screen")
 - ### Match View
 ![Bet History](src/assets/images/screenshots/match_view.JPG "Match View")
 - ### Upcoming Matches
