@@ -42,8 +42,8 @@ export default class Betslip extends React.Component {
 
     return(
       <>
-        <div className="betslip_burger menu_item" onClick={() => this.toggleMobileMenu()}>
-          <div>Betslip</div>
+        <div className="betslip_burger">
+          <button className="menu_item" onClick={() => this.toggleMobileMenu()}>Betslip</button>
           {totalBets > 0? <div className="betslip_count">{totalBets}</div>:""}
         </div>
         <section className={`betslip ${this.state.mobile_active? "mobile_active": ""}`}>

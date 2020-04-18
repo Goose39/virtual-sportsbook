@@ -7,7 +7,7 @@
 
 .league_name {
   text-align: left;
-  padding-left: 24px;
+  padding: 2px 0 2px 12px;
   color: white;
   border: 1px rgb(66, 64, 64) solid;
   background-color: rgb(35, 111, 161);

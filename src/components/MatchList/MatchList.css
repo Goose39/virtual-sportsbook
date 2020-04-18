@@ -20,8 +20,9 @@
 
 .matchlist_burger {
   position: fixed;
-  left: 12px;
-  top: 73px
+  left: 2px;
+  top: 65px;
+  cursor: pointer;
 }
 
 .upcoming_link {

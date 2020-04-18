@@ -43,8 +43,18 @@
 .uc_start {
   font-size: 12px;
   text-align: left;
-  width: 100px;
-  padding-left: 10px;
+  width: 155px;
+  padding-left: 5px;
+}
+
+@media only screen and (min-width: 950px) {
+
+  .uc_desc {
+    text-align: left;
+    width: 350px;
+    font-size: 16px;
+  }
+
 }
 
 @media only screen and (min-width: 1150px) {
@@ -53,12 +63,6 @@
     text-align: left;
     font-size: 14px;
     width: 150px;
-  }
-
-  .uc_desc {
-    text-align: left;
-    width: 350px;
-    font-size: 16px;
   }
 
 }

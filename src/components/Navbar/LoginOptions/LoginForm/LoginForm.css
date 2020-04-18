@@ -1,16 +1,11 @@
 .login_form {
   padding: 5px;
   position: absolute;
-  top: 110px;
+  top: 85px;
   left: calc(50% - 75px);;
   border-radius: 6px;
   border: 2px grey solid;
   color: black;
-}
-
-.login_button {
-
-  float: right
 }
 
 .red {
@@ -28,9 +23,8 @@ label {
   display: inline-block;
   width: 80px;
   text-align: left;
+  font-size: 12px;
 }​
-
-
 
 #LoginForm__user_name {
   width: 150px;
@@ -47,8 +41,9 @@ label {
   }
 
   .login_form {
-    top: 135px;
+    top: 104px;
   }
+
   .login_button {
     margin-top: 20px;
   }
@@ -57,7 +52,7 @@ label {
 
 @media only screen and (min-width: 850px) {
   .login_form {
-    top: 170px;
+    top: 105px;
   }
 }
 

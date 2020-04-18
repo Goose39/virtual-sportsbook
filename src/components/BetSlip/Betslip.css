@@ -47,32 +47,36 @@
 
 .betslip_burger {
   display: flex;
-  background-color: rgb(35, 111, 161);
   position: fixed;
   right: 0px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
-  top: 66px;
+  top: 58px;
   height: 30px;
   line-height: 30px;
-  padding: 0 12px 0 10px
+  padding-right: 5px;
+  cursor: pointer;
 }
 
 .betslip.mobile_active {
   right: 0px;
 }
 
+.betslip_burger > .menu_item {
+  padding: 0;
+}
+
 @media only screen and (min-width: 550px) {
 
   .betslip_count {
-    width: 20px;
-    height: 20px;
-    top: 4px;
-    line-height: 20px;
+    width: 22px;
+    height: 22px;
+    top: 3px;
+    line-height: 22px;
   }
 
   .betslip_burger {
-    top: 86px;
+    top: 85px;
   }
  
 }

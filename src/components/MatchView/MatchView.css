@@ -80,6 +80,14 @@
   color: #545151;
 }
 
+.match_start_error {
+  background-color: rgb(131, 35, 35);
+}
+
+.match_start_error > p {
+  color: white;
+}
+
 
 @media only screen and (min-width: 550px) {
   

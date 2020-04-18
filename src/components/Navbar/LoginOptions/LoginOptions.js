@@ -25,9 +25,9 @@ export default class LoginOptions extends Component {
     return(
       <>
         <div className='login_options'>
-          <div className="login_option" type="button" onClick={() => this.setFrom("Login")}>Login</div> 
+          <button className="login_option" onClick={() => this.setFrom("Login")}>Login</button> 
           <div className="separator">|</div>
-          <div className="login_option" type='button' onClick={() => this.setFrom("Register")}>Register</div>
+          <button className="login_option" type='button' onClick={() => this.setFrom("Register")}>Register</button>
         </div>
         <div className='form_container'>
           {this.state.formOption === 'Login'? <LoginForm onLoginSuccess={this.props.handleSetUser}/>: null}

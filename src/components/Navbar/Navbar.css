@@ -3,7 +3,7 @@ nav {
   flex-direction: row;
   justify-content: center;
   background-color: rgb(35, 111, 161);
-  min-height: 45px;
+  padding: 5px 0;
 }
 
 .menu_item_user {
@@ -23,6 +23,8 @@ nav {
 
 .menu_item {
   text-transform: uppercase;
+  background: none;
+  border: none;
   color: white;
 }
 

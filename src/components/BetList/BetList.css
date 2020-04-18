@@ -23,21 +23,7 @@ th {
 .bl_desc, .bl_team, .bl_stake,.bl_return, .bl_status {
   text-align: left;
 }
-.bl_desc {
 
-}
-.bl_team {
-  font-weight: bold;
-}
-.bl_price {
-
-}
-.bl_stake {
-
-}
-.bl_return {
-
-}
 .bl_status {
   text-transform: capitalize;
 }
