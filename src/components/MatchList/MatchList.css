@@ -51,7 +51,7 @@
     width: 35%;
     max-width: 300px;
     position: static;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 130px);
   }
 
 }

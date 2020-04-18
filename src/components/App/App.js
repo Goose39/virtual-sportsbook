@@ -58,7 +58,6 @@ class App extends React.Component {
     const{ user_id } = TokenService.readJwtToken();
     return BalanceApiService.reloadUserBalance(user_id)
       .then(balance => {
-        console.log(balance)
         if (balance > 0) {
           this.setState({
             balance: balance
@@ -130,7 +129,6 @@ class App extends React.Component {
       const{ user_id } = TokenService.readJwtToken();
 
       for (let i=0; i < bets.length; i++) {
-        console.log(bets[i].betId)
         if (bets[i].stake > 0) {
           let bet = {
             user_id: user_id, 
@@ -143,11 +141,9 @@ class App extends React.Component {
           promises.push(
             BetsApiService.placeBet(bet)
             .then(res => {
-              console.log(res)
-              console.log(bets[i].betId)
              confirmedBetIds.push(bets[i].betId)
             })
-            .catch(error => console.log(error))
+            .catch(error => error)
             )
         }
       }

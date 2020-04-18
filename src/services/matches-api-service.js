@@ -11,7 +11,7 @@ const MatchesApiService = {
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
-    .catch(error => console.log(error))
+    .catch(error => error)
   },
   // Get list of 10 matches that are soonest to start (/upcoming)
   getUpcomingMatches() {
