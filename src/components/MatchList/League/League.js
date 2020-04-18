@@ -5,7 +5,14 @@ import './League.css';
 export default function League(props) {
   const [hideMenu, setHideMenu] = useState(true);
 
-  let matches = props.matches.map(match => <Match key={match.matchId} matchId={match.matchId} home={match.home_team} away={match.away_team}/>
+  let matches = props.matches.map(match => 
+    <Match 
+      key={match.matchId} 
+      matchId={match.matchId} 
+      home={match.home_team} 
+      away={match.away_team}
+      toggleMobileMenu={props.toggleMobileMenu}
+    />
 )     
   return(
     <>

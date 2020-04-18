@@ -9,7 +9,7 @@
   text-align: left;
   overflow-x: hidden;
   width: 40%;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 125px);
   overflow-y: auto;
 }
 

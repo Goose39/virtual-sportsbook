@@ -40,6 +40,7 @@ export default class MatchList extends React.Component {
       sports = Object.keys(this.state.matches)
         .map(sport => 
           <Sport 
+            toggleMobileMenu={this.toggleMobileMenu}
             key={sport}
             sport={sport} 
             leagues={this.state.matches[sport].leagues}
@@ -52,7 +53,7 @@ export default class MatchList extends React.Component {
         <section className={`match_list_sidebar ${this.state.mobile_active? 'mobile_active': ''}`}>
         {!this.state.error
           ? <>
-              <div className='upcoming_link'><Link to={`/upcoming`}>Starting Soon</Link></div>
+              <div className='upcoming_link'><Link to={`/upcoming`} onClick={() => this.toggleMobileMenu()}>Starting Soon</Link></div>
               <div className='match_list'>{sports}</div>
             </>
           : <p>{this.state.error}</p>
