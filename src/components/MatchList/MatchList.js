@@ -18,7 +18,7 @@ export default class MatchList extends React.Component {
         matches: res
       })
     })
-    .catch(error => this.setState({error: "Unable to get match list at this time"}));
+    .catch(error => this.setState({error: 'Unable to get match list at this time'}));
   }
 
   toggleMobileMenu = () => {
@@ -44,16 +44,16 @@ export default class MatchList extends React.Component {
             sport={sport} 
             leagues={this.state.matches[sport].leagues}
           />)
-      } else sports = "No upcoming matches to display, check back later for updated match list"
+      } else sports = 'No upcoming matches to display, check back later for updated match list'
      
     return(
       <>
-        <button className="matchlist_burger menu_item" onClick={() => this.toggleMobileMenu()}>Sports</button>
-        <section className={`match_list_sidebar ${this.state.mobile_active? "mobile_active": ""}`}>
+        <button className='matchlist_burger menu_item' onClick={() => this.toggleMobileMenu()}>Sports</button>
+        <section className={`match_list_sidebar ${this.state.mobile_active? 'mobile_active': ''}`}>
         {!this.state.error
           ? <>
-              <div className="upcoming_link"><Link to={`/upcoming`}>Starting Soon</Link></div>
-              <div className="match_list">{sports}</div>
+              <div className='upcoming_link'><Link to={`/upcoming`}>Starting Soon</Link></div>
+              <div className='match_list'>{sports}</div>
             </>
           : <p>{this.state.error}</p>
         }

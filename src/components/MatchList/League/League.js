@@ -9,9 +9,9 @@ export default function League(props) {
 )     
   return(
     <>
-    <button className="league_name" onClick={() => setHideMenu(!hideMenu)}>{props.league}</button>
+    <button className='league_name' onClick={() => setHideMenu(!hideMenu)}>{props.league}</button>
     {!hideMenu?
-    <ul className="league">
+    <ul className='league'>
       {matches}
     </ul>
     : null}

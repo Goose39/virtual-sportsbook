@@ -1,6 +1,6 @@
 import React from 'react';
 import './UpComingMatches.css';
-import MatchesApiService from "../../services/matches-api-service"
+import MatchesApiService from '../../services/matches-api-service'
 import Match from './Match/Match'
 
 export default class UpComingMatches extends React.Component {
@@ -12,7 +12,7 @@ export default class UpComingMatches extends React.Component {
   componentDidMount() {
     MatchesApiService.getUpcomingMatches()
     .then(matches => this.setState({matches}))
-    .catch(error => this.setState({error: "Cannot get matches at this time"}))
+    .catch(error => this.setState({error: 'Cannot get matches at this time'}))
   }
     
   render() {
@@ -30,12 +30,12 @@ export default class UpComingMatches extends React.Component {
           league={match.league}
           start_time={match.start_time}
         />)                                  
-    } else upcomingMatches = "No upcoming matches to display, check back later for updated match list";
+    } else upcomingMatches = 'No upcoming matches to display, check back later for updated match list';
    
     const { error } = this.state
     return(
       
-      <div className="uc_matches_view">
+      <div className='uc_matches_view'>
         <header>Upcoming Matches</header>
         <div role='alert'>
           {error && <p className='red'>{error}</p>}

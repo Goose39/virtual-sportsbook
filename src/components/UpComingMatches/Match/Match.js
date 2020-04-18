@@ -7,8 +7,8 @@ export default function Match(props) {
   const start_time = Moment(props.start_time)
   const tillMatch = Moment(start_time).fromNow();
   return(
-    <li className="uc-match">
-      <div className="uc_match_left">
+    <li className='uc-match'>
+      <div className='uc_match_left'>
         <div className='uc_sport'>{props.sport}</div>
         <div className='uc_league'>{props.league}</div>
       </div>

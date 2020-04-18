@@ -37,42 +37,42 @@ export default function MatchView() {
     },[matchId]);
     // store image urls for header images of each sport
     const imageStore = [
-      { id: "Soccer", src: Soccer},
-      { id: "Tennis", src: Tennis},
-      { id: "American Football", src: Football},
-      { id: "Basketball", src: Basketball},
-      { id: "Baseball", src: Baseball},
-      { id: "Cricket", src: Cricket},
-      { id: "Ice Hockey", src: IceHockey},
-      { id: "Rugby Union", src: Rugby},
-      { id: "Rugby League", src: Rugby},
-      { id: "Boxing/MMA", src: Rugby},
+      { id: 'Soccer', src: Soccer},
+      { id: 'Tennis', src: Tennis},
+      { id: 'American Football', src: Football},
+      { id: 'Basketball', src: Basketball},
+      { id: 'Baseball', src: Baseball},
+      { id: 'Cricket', src: Cricket},
+      { id: 'Ice Hockey', src: IceHockey},
+      { id: 'Rugby Union', src: Rugby},
+      { id: 'Rugby League', src: Rugby},
+      { id: 'Boxing/MMA', src: Rugby},
     ];
     // Check if match has started, to disable odds buttons
-    let buttonDisabled = "disabled" 
+    let buttonDisabled = 'disabled' 
     if (checkMatchNotStarted(match)) {
-      buttonDisabled = ""
+      buttonDisabled = ''
     }
     return (
       <>
       {error === null && match && sport_name?
-      <div className="match_view">
+      <div className='match_view'>
         <div 
-          className="match_view_header" 
+          className='match_view_header' 
           style={{ backgroundImage: `url(${imageStore[imageStore.findIndex(x => x.id === sport_name)].src})` }}>
-          <div className="match_view_header_overlay">
-            <div className="match_header">{match.sport_name} - {match.league_name}</div>
-            <div className="opponents">{`${match.home_team_name} v ${match.away_team_name}`}</div>
-            <div className="start_time">Starts: {Moment(match.match_start).format('lll')}</div> 
+          <div className='match_view_header_overlay'>
+            <div className='match_header'>{match.sport_name} - {match.league_name}</div>
+            <div className='opponents'>{`${match.home_team_name} v ${match.away_team_name}`}</div>
+            <div className='start_time'>Starts: {Moment(match.match_start).format('lll')}</div> 
           </div>
         </div>
-        {!checkMatchNotStarted(match)? <div className="match_start_error"><p>MATCH HAS ALREADY STARTED.</p><p>YOU WILL NOT BE ABLE TO PLACE BETS ON IT</p></div>:null}
-        <div className="market">To win match</div> 
-        <div className="outcomes">         
-          <div className="outcome">
-            <div className="team">{match.home_team_name}</div>
+        {!checkMatchNotStarted(match)? <div className='match_start_error'><p>MATCH HAS ALREADY STARTED.</p><p>YOU WILL NOT BE ABLE TO PLACE BETS ON IT</p></div>:null}
+        <div className='market'>To win match</div> 
+        <div className='outcomes'>         
+          <div className='outcome'>
+            <div className='team'>{match.home_team_name}</div>
             <button 
-              className="odd"
+              className='odd'
               disabled={buttonDisabled}
               onClick={checkMatchNotStarted(match)
                 ? () => context.createBet(
@@ -87,10 +87,10 @@ export default function MatchView() {
                 }> {match.home_team_price}
             </button>
           </div>
-          <div className="outcome">
-            <div className="team">{match.away_team_name}</div>
+          <div className='outcome'>
+            <div className='team'>{match.away_team_name}</div>
             <button 
-              className="odd" 
+              className='odd' 
               disabled={buttonDisabled}
               onClick={checkMatchNotStarted(match)
                 ? () => context.createBet(
@@ -107,7 +107,7 @@ export default function MatchView() {
           </div>
         </div>        
       </div>     
-      :<div className="match_view"><p>{error}</p></div>}
+      :<div className='match_view'><p>{error}</p></div>}
       </>
     )
   }

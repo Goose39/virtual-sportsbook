@@ -4,8 +4,8 @@ import './Welcome.css';
 export default class Welcome extends React.Component {
   render() {
     return (
-      <section className="welcome">
-        <div className="instructions">
+      <section className='welcome'>
+        <div className='instructions'>
           <p>This app was built to give sports enthusiasts the opportunity to place bets on your favourite sports. The reponsive design supports any screen size from PC or Laptop to Tables and Mobile Phones.</p>
           <p>All matches are randomly generated. Matches are created every 15min with a starting time 24hrs in the future. All matches will be resulted 1min after they have started and all bets placed on those matches are settled 1min after the results have been finalized.</p>
           <p>Users will need to register an account in order to place bets. Each new account will be loaded with $1000 in virtual currency. Once you have created an account, you will be automatically logged in and you will be ready toplace your first bet!</p>

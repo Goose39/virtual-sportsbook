@@ -1,8 +1,8 @@
 import React from 'react';
-import { withRouter } from "react-router";
+import { withRouter } from 'react-router';
 import { Route, Switch } from 'react-router-dom';
-import "./App.css";
-import SportsbookContext from "../../context/SportsbookContext";
+import './App.css';
+import SportsbookContext from '../../context/SportsbookContext';
 import Welcome from '../Welcome/Welcome';
 import UpComingMatches from '../UpComingMatches/UpComingMatches';
 import Navbar from '../Navbar/Navbar';
@@ -26,7 +26,7 @@ class App extends React.Component {
     loggedIn: false,
     betslipDisplay: true, 
     sportListDisplay: false,
-    selectedMatchId: "", 
+    selectedMatchId: '', 
     upcomingMatches: [],
     error: null
   }
@@ -201,12 +201,12 @@ class App extends React.Component {
 
   return (
     <SportsbookContext.Provider value={contextValue}>
-        <header role="banner">
-          <div className="logo_box">
-            <div className="header_letter_box">V</div>
-            <div className="header_word_box irtual">irtual</div>
-            <div className="header_letter_box">S</div>
-            <div className="header_word_box ports">ports</div>
+        <header role='banner'>
+          <div className='logo_box'>
+            <div className='header_letter_box'>V</div>
+            <div className='header_word_box irtual'>irtual</div>
+            <div className='header_letter_box'>S</div>
+            <div className='header_word_box ports'>ports</div>
           </div>
         </header>
         <div className='App'>
@@ -225,8 +225,8 @@ class App extends React.Component {
           />
           <main>          
             <MatchList matches={this.state.matches}/>
-            <div className="console">
-              {this.state.error? <div className="console_error">{this.state.error}</div>:null}
+            <div className='console'>
+              {this.state.error? <div className='console_error'>{this.state.error}</div>:null}
               <Switch>
                 <Route
                   path={'/'}
