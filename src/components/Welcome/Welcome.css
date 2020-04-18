@@ -23,6 +23,10 @@ form {
   text-align: left;
 }
 
+.instructions > header {
+  font-weight: bold;
+}
+
 .login_options > .user_login_control {
   width: 120px;
   height: 40px;
