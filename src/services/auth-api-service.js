@@ -1,8 +1,8 @@
 import config from '../config';
 import TokenService from './token-service';
-import IdleService from './idle-service';
 
 const AuthApiService = {
+  // Check if user already exists (Registration)
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',
@@ -17,6 +17,7 @@ const AuthApiService = {
         : res.json()
     )
   },
+  // Check user credentials (Login Attemt)
   postLogin({ user_name, password }) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
       method: 'POST',
@@ -33,7 +34,6 @@ const AuthApiService = {
     )
     .then(res => {
       TokenService.saveAuthToken(res.authToken);
-      IdleService.regiserIdleTimerResets();
       return res
     })
   },

@@ -2,6 +2,7 @@ import config from '../config';
 import TokenService from './token-service';
 
 const BetsApiService = {
+  // Get bet history of logged in user
   getUserBets(user_id) {
     return fetch(`${config.API_ENDPOINT}/bets/${user_id}`, {
       method: 'GET',
@@ -17,13 +18,14 @@ const BetsApiService = {
     )
     .catch(error => error)
   },
+  // Save bet to logged in user account
   placeBet(bet) {
     return fetch(`${config.API_ENDPOINT}/bets`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `Bearer ${TokenService.getAuthToken()}`,
-      }, // JWT TOKEN
+      },
       body: JSON.stringify(bet),
     })
     .then(res =>

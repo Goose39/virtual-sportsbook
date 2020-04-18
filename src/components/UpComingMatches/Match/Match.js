@@ -6,7 +6,6 @@ import Moment from 'moment';
 export default function Match(props) {
   const start_time = Moment(props.start_time)
   const tillMatch = Moment(start_time).fromNow();
-  console.log(props)
   return(
     <li className="uc-match">
       <div className="uc_match_left">

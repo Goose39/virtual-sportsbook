@@ -15,7 +15,7 @@ export default function Navbar(props) {
               <div className="stacked_group">
                 <div className="user">{props.user}</div>
                 <div className="balance">
-                  {props.balance > 0
+                  {props.balance > 0 // Display reload option if balance is zero
                   ? <div>{`$${props.balance}`}<button className="refresh_button" onClick={() => props.refreshBalance()}><FontAwesomeIcon icon={faSync} size="xs" /></button></div>
                   : <button onClick={() => props.reloadBalance()}>Reload Balance</button>}
                 </div>

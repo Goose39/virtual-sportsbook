@@ -14,12 +14,12 @@ form {
 }
 
 .instructions {
-  padding: 4px;
-  font-size: 16px;
+  padding: 2px;
+  font-size: 14px;
 }
 
 .instructions > p {
-  margin: 8px;
+  margin: 6px;
   text-align: left;
 }
 
@@ -35,11 +35,11 @@ form {
 @media only screen and (min-width: 500px) {
 
   .instructions {
-    padding: 15px;
+    padding: 10px;
   }
 
   .instructions > p {
-    margin: 16px;
+    margin: 12px;
   }
 
   h1 {

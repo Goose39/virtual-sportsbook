@@ -12,7 +12,6 @@ import MatchView from '../MatchView/MatchView';
 import BetList from '../BetList/BetList';
 import { v4 as uuidv4 } from 'uuid';
 import TokenService from '../../services/token-service';
-import IdleService from '../../services/idle-service';
 import BetsApiService from '../../services/bets-api-service';
 import BalanceApiService from '../../services/balance-api-service';
 import PrivateRoute from '../Utils/PrivateRoute';
@@ -40,7 +39,8 @@ class App extends React.Component {
       .catch(error => this.setState({error}))
     }
   }     
-
+  // Refresh Button 
+  // In case  a userss bet was settled and they are waiting for funds to be credited
   refreshBalance = () => {
     const{ user_name, user_id } = TokenService.readJwtToken();
     return BalanceApiService.getUserBalance(user_id)
@@ -53,7 +53,7 @@ class App extends React.Component {
         })
       })
   };
-
+  // When user selects to have their balance reloaded after it hits $0
   reloadBalance = () => {
     const{ user_id } = TokenService.readJwtToken();
     return BalanceApiService.reloadUserBalance(user_id)
@@ -67,7 +67,7 @@ class App extends React.Component {
       }
     )};
 
-
+  // Bets loaded into bet slip
   createBet = (sport, league, team, price, matchId, match_desc, teamId) => {
     const newBets = [...this.state.bets];
     newBets.push({
@@ -86,7 +86,7 @@ class App extends React.Component {
       bets: newBets
     })
   }
-
+  // handler for change to bet stake in the betslip
   handleStake = (betId, stake) => {
     let newBets = [...this.state.bets];
 
@@ -104,7 +104,7 @@ class App extends React.Component {
       bets: newBets
     });
   }
-
+  // Removes bet from betslip
   removeBet = (betId) => {
     const newBets = [...this.state.bets];
     
@@ -119,7 +119,7 @@ class App extends React.Component {
       bets: newBets
     })
   }
-
+  // User makes a bet, confirmed bets removed from betlip
   placeBet = (betTotal) => {
 
     if (betTotal > 0) {
@@ -167,7 +167,7 @@ class App extends React.Component {
  
     }
   }
-
+  // Set users user_name and balance (login)
   handleSetUser = (user, balance) => {
     this.setState({
       user: user,
@@ -175,12 +175,9 @@ class App extends React.Component {
       loggedIn: true
     });
   };
-
+  // when logging out, clear token and redirect to /upcoming
   handleUserlogout = () => {
-    /* when logging out, clear token and callbacks to the refresh api and idle auto logout */
     TokenService.clearAuthToken();
-    TokenService.clearCallbackBeforeExpiry();
-    IdleService.unRegisterIdleResets();
     this.props.history.push('/upcoming');
     this.setState({
       loggedIn: false,

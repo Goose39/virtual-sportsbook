@@ -22,7 +22,7 @@ export default function MatchView() {
   const [error, setError] = useState(null);
   const [match, setMatch] = useState({});
   const [sport_name, setSportName]  = useState(null);
-  
+  // useEffect substituted for depreciated onComponentWillReceiveProps()
   useEffect(
     () => {
       MatchesApiService.getMatchById(matchId)
@@ -35,7 +35,7 @@ export default function MatchView() {
         history.push('/upcoming')
         })
     },[matchId]);
- 
+    // store image urls for header images of each sport
     const imageStore = [
       { id: "Soccer", src: Soccer},
       { id: "Tennis", src: Tennis},
@@ -48,6 +48,7 @@ export default function MatchView() {
       { id: "Rugby League", src: Rugby},
       { id: "Boxing/MMA", src: Rugby},
     ];
+    // Check if match has started, to disable odds buttons
     let buttonDisabled = "disabled" 
     if (checkMatchNotStarted(match)) {
       buttonDisabled = ""

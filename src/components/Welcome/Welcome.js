@@ -6,14 +6,15 @@ export default class Welcome extends React.Component {
     return (
       <section className="welcome">
         <div className="instructions">
-          <p>This app was built to give sports enthusiasts the opportunity to place a bet on their favourite sport and teams.</p>
-          <p>Start by creating an account by clicking on "Register" above</p>
-          <p>Once you have created an account you will be be able to place bets with a starting account balance of $1,000</p>
-          <p>If you already have an account setup, you can login by clicking the "Login" above.</p>
-          <p>Once you have logged in, you can start placing bets. You can find all the available matches that you can place bets on, on the left hand side of your screen.</p>
-          <p>Matches are grouped as follows: Sport >> League >> match. So if you are looking for Federer Vs Nadal tennis match, click Tennis, then ATP, then Federer Vs Nadal. You will then see the odds for each of the opponents.</p>
-          <p>Cliking the odd/price will add the bet to you betslip. Enter the amount you would like to wager in the betslip on the right of the screen and click "Place Bet" to complete the transaction.</p>
-          <p>GOOD LUCK!</p>
+          <p>This app was built to give sports enthusiasts the opportunity to place bets on your favourite sports. The reponsive design supports any screen size from PC or Laptop to Tables and Mobile Phones.</p>
+          <p>All matches are randomly generated. Matches are created every 15min with a starting time 24hrs in the future. All matches will be resulted 1min after they have started and all bets placed on those matches are settled 1min after the results have been finalized.</p>
+          <p>Users will need to register an account in order to place bets. Each new account will be loaded with $1000 in virtual currency. Once you have created an account, you will be automatically logged in and you will be ready toplace your first bet!</p>
+          <p>I order to place a bet you will need to find a match to bet on. There are two ways to do this; either by navigating through the "Match List" on the left hand side of the screen or you could click on "Upcoming Matches" on the top left to quickly navigate to the matches which are starting soon.</p>
+          <p>Once you have found your match, it will load in to the console in the center of the page. Click on the price/odd below the team you want to bet on. The bet will then load into the "Betslip" on the right.</p>
+          <p>The "Betslip" is where you will make your bet. Enter the amount that you would like to bet on your team (not more than your balance, of course!). When you are happy witht e amount you have enter and the team you have selected, click "Place Bet" at the bottom of the betslip and your bet is placed! </p>
+          <p>To check the results of your bets simply click at top of the page to the right of your user name, on "Bet History". There you will find a list of all your previous bets.</p>
+          <p>Blown up your bankroll? Dont stress, just click the RESET BALANCE button that will appear where you balance used to be. Your account will be reloaded with another $1000.</p>
+          <p>Good Luck!</p>
         </div>
       </section>
     )

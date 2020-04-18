@@ -6,7 +6,7 @@ export default class Betslip extends React.Component {
   state = {
     mobile_active: false, 
   }
-  
+  // toggle for burger menu in mobile
   toggleMobileMenu = () => {
     let change = !this.state.mobile_active
 
@@ -49,7 +49,7 @@ export default class Betslip extends React.Component {
         <section className={`betslip ${this.state.mobile_active? "mobile_active": ""}`}>
           <header>Betslip</header>
           {bets.length > 0? bets: "Place a bet"}
-          {bets.length > 0 && betTotal <= this.props.balance && this.props.loggedIn?  
+          {bets.length > 0 && betTotal <= this.props.balance && this.props.loggedIn?
             <button className="confirmation" onClick={() => this.props.placeBet(betTotal)}>
               <div className="bet_size">{`Place Bet: $${betTotal.toFixed(2)}`}</div>
               <div className="return">{`Total return: $${betReturn.toFixed(2)}`}</div>

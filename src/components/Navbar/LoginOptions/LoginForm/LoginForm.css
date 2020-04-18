@@ -1,7 +1,7 @@
 .login_form {
   padding: 5px;
   position: absolute;
-  top: 85px;
+  top: 90px;
   left: calc(50% - 75px);;
   border-radius: 6px;
   border: 2px grey solid;
@@ -41,7 +41,7 @@ label {
   }
 
   .login_form {
-    top: 104px;
+    top: 110px;
   }
 
   .login_button {
@@ -52,7 +52,7 @@ label {
 
 @media only screen and (min-width: 850px) {
   .login_form {
-    top: 105px;
+    top: 115px;
   }
 }
 

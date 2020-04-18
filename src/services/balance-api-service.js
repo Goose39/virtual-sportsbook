@@ -2,6 +2,7 @@ import config from '../config';
 import TokenService from './token-service';
 
 const BalanceApiService = {
+  // Get user balance
   getUserBalance(user_id) {
     return fetch(`${config.API_ENDPOINT}/users/${user_id}/balance`, {
       method: 'GET',
@@ -17,6 +18,7 @@ const BalanceApiService = {
     )
     .catch(error => error)
   },
+  // Reset user balance to 1000
   reloadUserBalance(user_id) {
     return fetch(`${config.API_ENDPOINT}/users/${user_id}/balance`, {
       method: 'PATCH',
