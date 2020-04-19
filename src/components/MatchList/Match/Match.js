@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 export default function Match(props) {
   return(
       <li className='match'>
-        <Link 
+        <Link
+          class='match_a'
+          onClick={(event) => props.closeMenu(event)}
           key={`link-${props.matchId}`} 
-          onClick={() => props.toggleMobileMenu()}
-          to={`/match/${props.matchId}`}>{props.home} v {props.away}</Link>
+          to={`/match/${props.matchId}`}>{props.home} v {props.away}
+        </Link>
       </li>
   );
 }

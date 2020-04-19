@@ -21,12 +21,29 @@ export default class MatchList extends React.Component {
     .catch(error => this.setState({error: 'Unable to get match list at this time'}));
   }
 
-  toggleMobileMenu = () => {
-    let change = !this.state.mobile_active
+  showMenu = (event) => {
+    event.preventDefault();
 
-    this.setState({
-      mobile_active: change,
-    })
+    this.setState({ mobile_active: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    });
+  }
+
+  closeMenu = (event) => {
+
+    if (!this.dropdownMenu.contains(event.target)) {
+
+    this.setState({ mobile_active: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
+  }
+  if (event.target.className === 'match_a') {
+
+    this.setState({ mobile_active: false }, () => {
+      document.removeEventListener('click', this.closeMenu);
+    });
+  }
+
   }
 
   isEmpty = (obj) => {
@@ -40,7 +57,7 @@ export default class MatchList extends React.Component {
       sports = Object.keys(this.state.matches)
         .map(sport => 
           <Sport 
-            toggleMobileMenu={this.toggleMobileMenu}
+            closeMenu={this.closeMenu}
             key={sport}
             sport={sport} 
             leagues={this.state.matches[sport].leagues}
@@ -49,12 +66,12 @@ export default class MatchList extends React.Component {
      
     return(
       <>
-        <button className='matchlist_burger menu_item' onClick={() => this.toggleMobileMenu()}>Sports</button>
+        <button className='matchlist_burger menu_item' onClick={(event) => this.showMenu(event)}>Sports</button>
         <section className={`match_list_sidebar ${this.state.mobile_active? 'mobile_active': ''}`}>
         {!this.state.error
           ? <>
-              <div className='upcoming_link'><Link to={`/upcoming`} onClick={() => this.toggleMobileMenu()}>Starting Soon</Link></div>
-              <div className='match_list'>{sports}</div>
+              <div className='upcoming_link'><Link to={`/upcoming`}>Starting Soon</Link></div>
+              <div className='match_list' ref={(element) => this.dropdownMenu = element }>{sports}</div>
             </>
           : <p>{this.state.error}</p>
         }

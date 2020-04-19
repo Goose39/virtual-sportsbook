@@ -1,21 +1,28 @@
 .match_list_sidebar, .betslip{
   display:none;
   background-color: rgb(231, 229, 229);
-  max-width: 250px;
   min-width: 190px;
+  max-width: 70%;
 }
 
 .match_list_sidebar {
   text-align: left;
   overflow-x: hidden;
-  width: 40%;
   max-height: calc(100vh - 125px);
-  overflow-y: auto;
 }
 
 .mobile_active {
   position: fixed;
   display: block;
+}
+
+.match_list_sidebar.mobile_active {
+  width: 75%;
+  border: 5px black solid;
+}
+
+.mobile_active > .upcoming_link {
+  border: white 2px solid;
 }
 
 .matchlist_burger {
@@ -28,7 +35,6 @@
 .upcoming_link {
   text-align: center;
   background-color: rgb(66, 64, 64);
-  width: 100%;
   padding: 5px;
 }
 
@@ -43,7 +49,6 @@
     display: none;
   }
 
-
   .match_list_sidebar {
     position: static;
     color: darkslategray;
@@ -52,6 +57,15 @@
     max-width: 300px;
     position: static;
     height: calc(100vh - 130px);
+  }
+
+  
+  .mobile_active > .upcoming_link {
+    border: none;
+  }
+
+  .match_list_sidebar.mobile_active {
+    border: none;
   }
 
 }

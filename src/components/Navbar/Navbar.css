@@ -41,15 +41,16 @@ nav {
   margin: 0px 10px;
 }
 
-.history_link, .logout_button {
+.history_link, .logout_button, .reload_button {
   font-size: 12px;
   text-decoration: none;
   background-color: rgb(66, 64, 64);
   color: white;
   text-transform: uppercase;
-  padding: 2px;
+  padding: 4px;
   border: none;
-  cursor: pointer;
+  cursor: pointer; 
+  margin: 2px 0; 
 }
 
 .stacked_group > .login_option{

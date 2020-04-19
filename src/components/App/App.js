@@ -150,17 +150,19 @@ class App extends React.Component {
 
       return Promise.all(promises)
       .then(result  => {
-        for (let i = 0; i < bets.length; i++) {
-          if (confirmedBetIds.includes(bets[i].betId)) {
-            bets.splice(i, 1)
-          } 
-        }
-        this.setState({ 
-          bets: bets, 
-          balance: newBalance - betTotal 
+          for (let i = 0; i < confirmedBetIds.length; i++) {
+            for (let k = 0; k < bets.length; k++) {
+              // remove successful bets from betslip
+              if (confirmedBetIds.includes(bets[k].betId)) {
+                bets.splice(k, 1)
+              } 
+            }
+          }
+          this.setState({ 
+            bets: bets, 
+            balance: newBalance - betTotal 
+          })
         })
-      })
- 
     }
   }
   // Set users user_name and balance (login)

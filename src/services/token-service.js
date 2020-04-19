@@ -3,25 +3,25 @@ import config from '../config';
 
 const TokenService = {
   saveAuthToken(token) {
-    window.localStorage.setItem(config.TOKEN_KEY, token)
+    window.localStorage.setItem('VS-Auth-Token', token);
   },
   getAuthToken() {
-    return window.localStorage.getItem(config.TOKEN_KEY)
+    return window.localStorage.getItem(config.TOKEN_KEY);
   },
   clearAuthToken() {
-    window.localStorage.removeItem(config.TOKEN_KEY)
+    window.localStorage.removeItem(config.TOKEN_KEY);
   },
   hasAuthToken() {
-    return !!TokenService.getAuthToken()
+    return !!TokenService.getAuthToken();
   },
   makeBasicAuthToken(userName, password) {
-    return window.btoa(`${userName}:${password}`)
+    return window.btoa(`${userName}:${password}`);
   },
   parseJwt(jwt) {
-    return jwtDecode(jwt)
+    return jwtDecode(jwt);
   },
   readJwtToken() {
-    return TokenService.parseJwt(TokenService.getAuthToken())
+    return TokenService.parseJwt(TokenService.getAuthToken());
   },
 };
 

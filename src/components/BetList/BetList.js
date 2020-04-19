@@ -17,9 +17,11 @@ export default class BetList extends React.Component {
           this.setState({ bets })
         })
         .catch(error => this.setState({error}))
-      } else this.setState({error: 'Invalid User'})
+      } else 
+        this.setState({error: 'Invalid User'})
+      
   }
-    
+  
   render() {
   let bets = this.state.bets;
 

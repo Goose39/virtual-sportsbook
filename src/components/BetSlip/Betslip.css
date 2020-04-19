@@ -35,6 +35,7 @@
 .confirmation_disabled {
   background-color: rgb(131, 35, 35);
   color: white;
+  padding: 5px;
 }
 
 .confirmation:hover {
@@ -60,6 +61,13 @@
 
 .betslip.mobile_active {
   right: 0px;
+  border: 8px #834f23c7 solid
+}
+
+
+.betslip.mobile_active > header{
+  right: 0px;
+  border: 2px white solid;
 }
 
 .betslip_burger > .menu_item {
@@ -92,6 +100,15 @@
     width: 25%;
     max-width: 300px;
     position: static;
+  }
+
+  .betslip.mobile_active {
+    border: none
+  }
+  
+  
+  .betslip.mobile_active > header{
+    border: none;
   }
 
 }

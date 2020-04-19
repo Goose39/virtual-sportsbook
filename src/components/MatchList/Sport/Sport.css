@@ -2,6 +2,7 @@
   white-space: nowrap;
   display: flex;
   flex-direction: column;
+  overflow-x: visible;
 }
 
 .sport_name, .league_name {

@@ -45,6 +45,10 @@ To check the results of your bets simply click at top of the page to the right o
 <br>
 Blown up your bankroll? Dont stress, just click the RESET BALANCE button that will appear where you balance used to be. Your account will be reloaded with another $1000.
 
+## User Accounts
+You are more than welcome to create you own betting account to place bets. Alternatively you can login with the deom account below: <br>
+Username: Demo <br>
+Password: Demo@1234 
 
 ## Technology
 Frontend/Client was built using React and the API built with NodeJS and PostgreSQL. Want more information about the backend? Checkout the [API Documentation](https://github.com/Goose39/virtual-sportsbook-api)

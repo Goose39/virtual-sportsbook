@@ -15,7 +15,7 @@ const AuthApiService = {
       (!res.ok) 
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    )
+    );
   },
   // Check user credentials (Login Attemt)
   postLogin({ user_name, password }) {
@@ -28,14 +28,14 @@ const AuthApiService = {
       body: JSON.stringify({ user_name, password }),
     })
     .then(res =>
-      (!res.ok) 
+      (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
     )
     .then(res => {
       TokenService.saveAuthToken(res.authToken);
-      return res
-    })
+      return res;
+    });
   },
 };
 
