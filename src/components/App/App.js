@@ -17,7 +17,6 @@ import BalanceApiService from '../../services/balance-api-service';
 import PrivateRoute from '../Utils/PrivateRoute';
 
 class App extends React.Component {
-
   state = {
     user: null, 
     user_id: null,
@@ -120,7 +119,6 @@ class App extends React.Component {
   }
   // User makes a bet, confirmed bets removed from betlip
   placeBet = (betTotal) => {
-
     if (betTotal > 0) {
       let bets = [...this.state.bets];
       let newBalance = this.state.balance;
