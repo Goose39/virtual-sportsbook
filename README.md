@@ -25,7 +25,7 @@ See Documentation in API repo [here](https://github.com/Goose39/virtual-sportsbo
 Virtual Sportsbook is an app that allows you to make bet on your favourite sports. The reponsive design supports any screen size from PC or Laptop to Tables and Mobile Phones. 
 <br>
 <br>
-All matches are randomly generated. Matches are created every 15min with a starting time 24hrs in the future. All matches will be resulted 1min after they have started and all bets placed on those matches are settled 1min after the results have been finalized.
+All matches are randomly generated. Matches are created every 15min with a starting time 24hrs in the future. All matches will be resulted 1min after their starting time and all bets placed on those matches are settled 1min after the results have been finalized. PLEASE NOTE: That as the backend is hosted on free use plan it is not running 24/7 and will sleep if in-active for an hour. In the case that you do not see matches on the site initially please wait for the next scheduled cron job to generate a new match. Cron jobs are schedule for [0, 15, 30, 45] minutes of each the hour.  
 <br>
 <br>
 Users will need to register an account in order to place bets. Each new account will be loaded with $1000 in virtual currency. Once you have created an account, you will be automatically logged in and you will be ready toplace your first bet!
