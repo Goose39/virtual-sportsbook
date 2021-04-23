@@ -1,30 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TokenService from '../../services/token-service';
 import BetsApiService from '../../services/bets-api-service';
 import './BetList.css';
 
-export default class BetList extends React.Component {
-  state = {
-    error: null,
-    bets: [], 
-  }
+export default function BetList(props) {
+  const [error, setError] = useState(null);
+  const [bets, setBets] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
     if (TokenService.hasAuthToken()) {
-    const{ user_id } = TokenService.readJwtToken();
-    return BetsApiService.getUserBets(user_id)
-        .then(bets => {
-          this.setState({ bets })
-        })
-        .catch(error => this.setState({error}))
-      } else 
-        this.setState({error: 'Invalid User'})
-      
-  }
+    const { user_id } = TokenService.readJwtToken();
+    
+    BetsApiService.getUserBets(user_id)
+    .then(bets => setBets(bets))
+    .catch(err => setError(err))
+    } else setError('Invalid User')
+  }, []) 
   
-  render() {
-  let bets = this.state.bets;
-
   return(
     <div className='bet_history'>
       <header>Betting History</header>
@@ -40,7 +32,7 @@ export default class BetList extends React.Component {
           </tr>
         </thead>
         <tbody className='bet_history_list'>
-          {bets.length > 0? 
+          {!error && bets.length > 0? 
             bets.map(bet => { 
               return <tr key={`bt-${bet.bet_id}`} className='bet_line'>
                         <td key={`tn-${bet.bet_id}`} className='bl_team'>{bet.team_name}</td>
@@ -55,5 +47,4 @@ export default class BetList extends React.Component {
       </table>
     </div>
   );
-  }
 }
