@@ -9,8 +9,9 @@ export default class LoginForm extends React.Component {
   };
 
   state = { error: null };
+  
 
-  handleSubmitJwtAuth = ev => {
+  handleSubmitJwtAuth = (ev) => {
     ev.preventDefault()
     TokenService.clearAuthToken();
     this.setState({ error: null })
@@ -21,11 +22,13 @@ export default class LoginForm extends React.Component {
       password: password.value,
     })
     .then(res => {
+      console.log('login res', res)
       const { user_name } = TokenService.readJwtToken();
       this.props.onLoginSuccess(user_name, res.user_balance)
     })
     .catch(err => {
       password.value = '';
+      console.log(err)
       this.setState({ error: err.error })
     })
   };

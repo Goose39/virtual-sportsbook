@@ -40,7 +40,7 @@ class App extends React.Component {
     }
   }     
   // Refresh Button 
-  // In case  a userss bet was settled and they are waiting for funds to be credited
+  // In case a users bet was settled and they are waiting for funds to be credited
   refreshBalance = () => {
     const{ user_name, user_id } = TokenService.readJwtToken();
     return BalanceApiService.getUserBalance(user_id)
@@ -230,7 +230,6 @@ class App extends React.Component {
                   path={'/'}
                   exact
                   component={Welcome} 
-                  />}
                 />
                 <Route
                   path={'/match/:matchId'}
