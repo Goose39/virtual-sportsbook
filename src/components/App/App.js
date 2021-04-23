@@ -221,8 +221,11 @@ class App extends React.Component {
                             refreshBalance={this.refreshBalance}
                           />}
           />
-          <main>          
-            <MatchList matches={this.state.matches}/>
+          <main>      
+            <Route
+              path='/'
+              render={({history}) => <MatchList history={history} matches={this.state.matches}/>}
+            />    
             <div className='console'>
               {this.state.error? <div className='console_error'>{this.state.error}</div>:null}
               <Switch>
@@ -230,7 +233,6 @@ class App extends React.Component {
                   path={'/'}
                   exact
                   component={Welcome} 
-                  />}
                 />
                 <Route
                   path={'/match/:matchId'}

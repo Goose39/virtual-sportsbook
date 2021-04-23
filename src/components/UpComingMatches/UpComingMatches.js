@@ -1,23 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './UpComingMatches.css';
 import MatchesApiService from '../../services/matches-api-service'
 import Match from './Match/Match'
 
-export default class UpComingMatches extends React.Component {
-  state = { 
-    error: null,
-    matches: []
-  }
+export default function UpComingMatches() {
 
-  componentDidMount() {
+  const [error, setError] = useState(null);
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
     MatchesApiService.getUpcomingMatches()
-    .then(matches => this.setState({matches}))
-    .catch(error => this.setState({error: 'Cannot get matches at this time'}))
-  }
+    .then(matches => setMatches(matches))
+    .catch(error => setError('Cannot get matches at this time'))
+  }, []) 
     
-  render() {
     let upcomingMatches;
-    let matches = this.state.matches
 
     if (matches && matches.length > 0)  {
       upcomingMatches = matches.map(match => 
@@ -32,7 +29,6 @@ export default class UpComingMatches extends React.Component {
         />)                                  
     } else upcomingMatches = 'No upcoming matches to display, check back later for updated match list';
    
-    const { error } = this.state
     return(
       
       <div className='uc_matches_view'>
@@ -48,5 +44,4 @@ export default class UpComingMatches extends React.Component {
         </section>
       </div>
     );
-  }
 }
